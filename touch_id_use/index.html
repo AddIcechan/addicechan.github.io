@@ -3,26 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>AddIce</title>
+  <title>Touch ID 的使用 | AddIce</title>
 
   
   <meta name="author" content="六叔">
   
 
   
-  <meta name="description" content="Touch ID 的使用使用Touch ID主要是用到 LocalAuthentication。这个库是iOS8之后才有的。在使用上，其实不难，主要是两个方法：1public func canEvaluatePolicy(policy: LAPolicy, error: NSErrorPointer">
+  <meta name="description" content="使用Touch ID主要是用到 LocalAuthentication。这个库是iOS8之后才有的。在使用上，其实不难，主要是两个方法：1public func canEvaluatePolicy(policy: LAPolicy, error: NSErrorPointer) -&amp;gt; Bool">
   
 
   
   
-  <meta name="keywords" content="">
+  <meta name="keywords" content="Swift">
   
 
   <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  
+  <meta property="og:title" content="Touch ID 的使用"/>
 
   <meta property="og:site_name" content="AddIce"/>
 
@@ -52,11 +52,11 @@
       
         <li><a href="/">Home</a></li>
       
-        <li><a href="/Swift">Swift</a></li>
+        <li><a href="/categories/Swift">Swift</a></li>
       
-        <li><a href="/Objective-C">Objective-C</a></li>
+        <li><a href="/categories/Objective-C">Objective-C</a></li>
       
-        <li><a href="/Others">Others</a></li>
+        <li><a href="/categories/Others">Others</a></li>
       
     </ul>
   </nav>
@@ -67,7 +67,7 @@
 
   
     
-    <h3 class="article-title"><span></span></h3>
+    <h3 class="article-title"><span>Touch ID 的使用</span></h3>
     
   
 
@@ -87,7 +87,7 @@
   <div class="article-content">
     <div class="entry">
       
-        <h2 id="Touch-ID-的使用"><a href="#Touch-ID-的使用" class="headerlink" title="Touch ID 的使用"></a>Touch ID 的使用</h2><p>使用<code>Touch ID</code>主要是用到 <code>LocalAuthentication</code>。这个库是<code>iOS8</code>之后才有的。在使用上，其实不难，主要是两个方法：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">canEvaluatePolicy</span><span class="params">(policy: LAPolicy, error: NSErrorPointer)</span></span> -&gt; <span class="type">Bool</span></div></pre></td></tr></table></figure></p>
+        <p>使用<code>Touch ID</code>主要是用到 <code>LocalAuthentication</code>。这个库是<code>iOS8</code>之后才有的。在使用上，其实不难，主要是两个方法：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">canEvaluatePolicy</span><span class="params">(policy: LAPolicy, error: NSErrorPointer)</span></span> -&gt; <span class="type">Bool</span></div></pre></td></tr></table></figure></p>
 <p>该方法是用于判断设备是否支持使用<code>Touch ID</code></p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">evaluatePolicy</span><span class="params">(policy: LAPolicy, localizedReason: String, reply: <span class="params">(Bool, NSError?)</span></span></span> -&gt; <span class="type">Void</span>)</div></pre></td></tr></table></figure>
 <p>该方法则是进行<code>Touch ID</code>验证后的处理。</p>
@@ -103,7 +103,21 @@
     <div class="article-meta pull-left">
 
     
+      
 
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/Swift/">Swift</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/Swift/">Swift</a>
+    </span>
     
 
     </div>

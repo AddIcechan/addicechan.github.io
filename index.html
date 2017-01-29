@@ -47,11 +47,11 @@
       
         <li><a href="/">Home</a></li>
       
-        <li><a href="/Swift">Swift</a></li>
+        <li><a href="/categories/Swift">Swift</a></li>
       
-        <li><a href="/Objective-C">Objective-C</a></li>
+        <li><a href="/categories/Objective-C">Objective-C</a></li>
       
-        <li><a href="/Others">Others</a></li>
+        <li><a href="/categories/Others">Others</a></li>
       
     </ul>
   </nav>
@@ -142,7 +142,7 @@
 
   
     
-    <h3 class="article-title"><a href="/charles_download_app_old_version/"><span></span></a></h3>
+    <h3 class="article-title"><a href="/charles_download_app_old_version/"><span>利用 Charles 通过 iTunes 下载旧版本的 App</span></a></h3>
     
   
 
@@ -162,7 +162,7 @@
   <div class="article-content">
     <div class="entry">
       
-        <h2 id="利用Charles通过iTunes下载旧版本的App"><a href="#利用Charles通过iTunes下载旧版本的App" class="headerlink" title="利用Charles通过iTunes下载旧版本的App"></a>利用<code>Charles</code>通过<code>iTunes</code>下载旧版本的<code>App</code></h2><p>看过一篇关于使用<code>fiddler</code>工具进行抓包，通过<code>iTunes</code>下载旧版本App的文章，但是这是<code>windows</code>平台下的。<a href="http://bbs.feng.com/read-htm-tid-10125110.html" target="_blank" rel="external">文章链接</a>。如果是<code>mac</code>平台呢？</p>
+        <p>看过一篇关于使用<code>fiddler</code>工具进行抓包，通过<code>iTunes</code>下载旧版本App的文章，但是这是<code>windows</code>平台下的。<a href="http://bbs.feng.com/read-htm-tid-10125110.html" target="_blank" rel="external">文章链接</a>。如果是<code>mac</code>平台呢？</p>
 <p><code>fiddler</code>只有<code>windows</code>版本，这只是一个抓包工具。那么<code>mac</code>下，可以通过<code>Charles</code>进行抓包拦截，然后下载。</p>
 <p>步骤：</p>
 <ol>
@@ -198,7 +198,21 @@
     <div class="article-meta pull-left">
 
     
+      
 
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/Others/">Others</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/Others/">Others</a>
+    </span>
     
 
     </div>
@@ -213,7 +227,7 @@
 
   
     
-    <h3 class="article-title"><a href="/touch_id_use/"><span></span></a></h3>
+    <h3 class="article-title"><a href="/touch_id_use/"><span>Touch ID 的使用</span></a></h3>
     
   
 
@@ -233,7 +247,7 @@
   <div class="article-content">
     <div class="entry">
       
-        <h2 id="Touch-ID-的使用"><a href="#Touch-ID-的使用" class="headerlink" title="Touch ID 的使用"></a>Touch ID 的使用</h2><p>使用<code>Touch ID</code>主要是用到 <code>LocalAuthentication</code>。这个库是<code>iOS8</code>之后才有的。在使用上，其实不难，主要是两个方法：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">canEvaluatePolicy</span><span class="params">(policy: LAPolicy, error: NSErrorPointer)</span></span> -&gt; <span class="type">Bool</span></div></pre></td></tr></table></figure></p>
+        <p>使用<code>Touch ID</code>主要是用到 <code>LocalAuthentication</code>。这个库是<code>iOS8</code>之后才有的。在使用上，其实不难，主要是两个方法：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">canEvaluatePolicy</span><span class="params">(policy: LAPolicy, error: NSErrorPointer)</span></span> -&gt; <span class="type">Bool</span></div></pre></td></tr></table></figure></p>
 <p>该方法是用于判断设备是否支持使用<code>Touch ID</code></p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">evaluatePolicy</span><span class="params">(policy: LAPolicy, localizedReason: String, reply: <span class="params">(Bool, NSError?)</span></span></span> -&gt; <span class="type">Void</span>)</div></pre></td></tr></table></figure>
 <p>该方法则是进行<code>Touch ID</code>验证后的处理。</p>
@@ -249,7 +263,21 @@
     <div class="article-meta pull-left">
 
     
+      
 
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/Swift/">Swift</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/Swift/">Swift</a>
+    </span>
     
 
     </div>

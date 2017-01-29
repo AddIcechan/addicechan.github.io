@@ -47,9 +47,9 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">Home</a></li>
+        <li><a href="/">主页</a></li>
       
-        <li><a href="/archives">Archives</a></li>
+        <li><a href="/archives">归档</a></li>
       
     </ul>
   </nav>
@@ -61,13 +61,13 @@
 
   
     
-    <h3 class="article-title"><a href="/2017/01/29/swift_use/"><span></span></a></h3>
+    <h3 class="article-title"><a href="/swift_use/"><span></span></a></h3>
     
   
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/2017/01/29/swift_use/" rel="bookmark">
+      <a href="/swift_use/" rel="bookmark">
         <time class="entry-date published" datetime="2017-01-29T08:28:03.000Z">
           2017-01-29
         </time>
@@ -81,22 +81,21 @@
   <div class="article-content">
     <div class="entry">
       
-        <h2 id="整理Swift开发用到的一些小技巧"><a href="#整理Swift开发用到的一些小技巧" class="headerlink" title="整理Swift开发用到的一些小技巧"></a>整理<code>Swift</code>开发用到的一些小技巧</h2><p>###Selector</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">extension</span> <span class="title">Selector</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">let</span> open = #selector(<span class="type">TestViewController</span>.open(sender:))</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestViewController</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="keyword">let</span> openBtn : <span class="type">UIButton</span> = <span class="type">UIButton</span>()</div><div class="line">        openBtn.addTarget(<span class="keyword">self</span>, action: .open, <span class="keyword">for</span>: .touchUpInside)</div><div class="line">        view.addSubview(openBtn)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@objc</span> fileprivate <span class="function"><span class="keyword">func</span> <span class="title">open</span><span class="params">(sender: UIButton)</span></span> &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h2 id="整理Swift开发用到的一些小技巧"><a href="#整理Swift开发用到的一些小技巧" class="headerlink" title="整理Swift开发用到的一些小技巧"></a>整理<code>Swift</code>开发用到的一些小技巧</h2><h3 id="Selector"><a href="#Selector" class="headerlink" title="Selector"></a>Selector</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">extension</span> <span class="title">Selector</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">let</span> open = #selector(<span class="type">TestViewController</span>.open(sender:))</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestViewController</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="keyword">let</span> openBtn : <span class="type">UIButton</span> = <span class="type">UIButton</span>()</div><div class="line">        openBtn.addTarget(<span class="keyword">self</span>, action: .open, <span class="keyword">for</span>: .touchUpInside)</div><div class="line">        view.addSubview(openBtn)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@objc</span> fileprivate <span class="function"><span class="keyword">func</span> <span class="title">open</span><span class="params">(sender: UIButton)</span></span> &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>用<code>Extension</code>的方式去扩展<code>Selector</code>，在会使用到<code>Selector</code>的情况下，调用是极其优雅的。比如<code>UIButton</code>的<code>Action</code>，<code>Notification</code>等</p>
-<p>###UIView…<br>在写一个view的时候，通常是这样去写的——</p>
+<h3 id="UIView…"><a href="#UIView…" class="headerlink" title="UIView…"></a>UIView…</h3><p>在写一个view的时候，通常是这样去写的——</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> view : <span class="type">UIView</span> = <span class="type">UIView</span>()</div><div class="line">view.backgroundColor = .red</div></pre></td></tr></table></figure>
 <p>但其实，还可以用另外一种写法——</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> view : <span class="type">UIView</span> = &#123;</div><div class="line">    <span class="keyword">let</span> tempView : <span class="type">UIView</span> = <span class="type">UIView</span>()</div><div class="line">    tempView.backgroundColor = .red</div><div class="line">    <span class="keyword">return</span> tempView</div><div class="line">&#125;()</div></pre></td></tr></table></figure>
 <p>这样写，其实可以很好的隔离代码，看起来也更加方便。<br>另外，<code>Objective-C</code>也有类似的写法。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">UIView *view = (&#123;</div><div class="line">     UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];</div><div class="line">     tempView.backgroundColor = [UIColor yellowColor];</div><div class="line">     tempView;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>###常量，还有一些什么鬼<br><code>Swift</code>的<code>Struct</code>去定义一些常量等是比较方便的。比如<code>UIFont</code>.<br>在UI开发中，经常会用到一些字体。<code>Objective-C</code>中，比较常用的是用宏。但是宏在<code>Swift</code>中是无法使用的，所以使用<code>Struct</code>去定义一些常用的<code>UIFont</code>，也是比较方便的.</p>
+<h3 id="常量，还有一些什么鬼"><a href="#常量，还有一些什么鬼" class="headerlink" title="常量，还有一些什么鬼"></a>常量，还有一些什么鬼</h3><p><code>Swift</code>的<code>Struct</code>去定义一些常量等是比较方便的。比如<code>UIFont</code>.<br>在UI开发中，经常会用到一些字体。<code>Objective-C</code>中，比较常用的是用宏。但是宏在<code>Swift</code>中是无法使用的，所以使用<code>Struct</code>去定义一些常用的<code>UIFont</code>，也是比较方便的.</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义这样的一个结构体</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Fonts</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">let</span> content : <span class="type">UIFont</span> = <span class="type">UIFont</span>.systemFont(ofSize: <span class="number">14.0</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// 使用</span></div><div class="line">titleLabel.font = <span class="type">Fonts</span>.content</div></pre></td></tr></table></figure>
-<p>同样，也适用于UIColor，比如——</p>
+<p>同样，也适用于<code>UIColor</code>，比如——</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义这样的一个结构体</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Colors</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">let</span> title : <span class="type">UIColor</span> = <span class="type">UIColor</span>(red: <span class="number">190.0</span>/<span class="number">255.0</span>, green: <span class="number">180.0</span>/<span class="number">255.0</span>, blue: <span class="number">170.0</span>/<span class="number">255.0</span>, alpha: <span class="number">1</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// 使用</span></div><div class="line">label.textColor = <span class="type">Colors</span>.title</div></pre></td></tr></table></figure>
 <p>对于<code>UIFont</code>和<code>UIColor</code>，其实也可以使用<code>extension</code>，对其进行扩展。在使用上，也有种原生的舒爽。比如<code>UIColor</code>——</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UIColor</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">let</span> title : <span class="type">UIColor</span> = <span class="type">UIColor</span>(red: <span class="number">190.0</span>/<span class="number">255.0</span>, green: <span class="number">180.0</span>/<span class="number">255.0</span>, blue: <span class="number">170.0</span>/<span class="number">255.0</span>, alpha: <span class="number">1</span>)</div><div class="line">&#125;</div><div class="line">label.textColor = .title</div></pre></td></tr></table></figure>
-<p>###for-in<br>在<code>Objective-C</code>中，写一个for循环，大多数是——</p>
+<h3 id="for-in"><a href="#for-in" class="headerlink" title="for-in"></a>for-in</h3><p>在<code>Objective-C</code>中，写一个for循环，大多数是——</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">for(int i = 0; i &lt; 5; i++ ) &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>但是在<code>Swift</code>中，写<code>for</code>循环大多数快速遍历的形式——<code>for-in</code>。其实，这个在<code>Objective-C</code>中，也是存在的。但是在<code>Swift</code>里面，则多了一些变化——</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line"><span class="comment">// 第一种方式</span></div><div class="line"><span class="keyword">for</span> element <span class="keyword">in</span> xxArr &#123;</div><div class="line">    <span class="built_in">print</span>(element)</div><div class="line">&#125;</div><div class="line">log:<span class="number">1</span></div><div class="line">    <span class="number">2</span></div><div class="line">    <span class="number">3</span></div><div class="line"><span class="comment">// 第二种方式，如需使用到 序号</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;arr.<span class="built_in">count</span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(i)</span>:<span class="subst">\(arr[i])</span>"</span>)</div><div class="line">&#125;</div><div class="line">log:<span class="number">0</span>:<span class="number">1</span></div><div class="line">    <span class="number">1</span>:<span class="number">2</span></div><div class="line">    <span class="number">2</span>:<span class="number">3</span></div><div class="line"></div><div class="line"><span class="comment">// 第三种方式</span></div><div class="line"><span class="keyword">for</span> (index, element) <span class="keyword">in</span> arr.enumerated() &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(index)</span>:<span class="subst">\(element)</span>"</span>)</div><div class="line">&#125;</div><div class="line">log:<span class="number">0</span>:<span class="number">1</span></div><div class="line">    <span class="number">1</span>:<span class="number">2</span></div><div class="line">    <span class="number">2</span>:<span class="number">3</span></div></pre></td></tr></table></figure>
@@ -127,13 +126,13 @@
 
   
     
-    <h3 class="article-title"><a href="/2016/08/22/charles_download_app_old_version/"><span></span></a></h3>
+    <h3 class="article-title"><a href="/charles_download_app_old_version/"><span></span></a></h3>
     
   
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/2016/08/22/charles_download_app_old_version/" rel="bookmark">
+      <a href="/charles_download_app_old_version/" rel="bookmark">
         <time class="entry-date published" datetime="2016-08-22T14:12:16.000Z">
           2016-08-22
         </time>
@@ -198,13 +197,13 @@
 
   
     
-    <h3 class="article-title"><a href="/2016/03/29/touch_id_use/"><span></span></a></h3>
+    <h3 class="article-title"><a href="/touch_id_use/"><span></span></a></h3>
     
   
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/2016/03/29/touch_id_use/" rel="bookmark">
+      <a href="/touch_id_use/" rel="bookmark">
         <time class="entry-date published" datetime="2016-03-29T15:25:25.000Z">
           2016-03-29
         </time>

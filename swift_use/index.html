@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>AddIce</title>
+  <title>整理`Swift`开发用到的一些小技巧 | AddIce</title>
 
   
   <meta name="author" content="六叔">
@@ -22,7 +22,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-  
+  <meta property="og:title" content="整理`Swift`开发用到的一些小技巧"/>
 
   <meta property="og:site_name" content="AddIce"/>
 
@@ -63,7 +63,7 @@
 
   
     
-    <h3 class="article-title"><span></span></h3>
+    <h3 class="article-title"><span>整理`Swift`开发用到的一些小技巧</span></h3>
     
   
 
@@ -83,7 +83,7 @@
   <div class="article-content">
     <div class="entry">
       
-        <h2 id="整理Swift开发用到的一些小技巧"><a href="#整理Swift开发用到的一些小技巧" class="headerlink" title="整理Swift开发用到的一些小技巧"></a>整理<code>Swift</code>开发用到的一些小技巧</h2><h3 id="Selector"><a href="#Selector" class="headerlink" title="Selector"></a>Selector</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">extension</span> <span class="title">Selector</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">let</span> open = #selector(<span class="type">TestViewController</span>.open(sender:))</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestViewController</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="keyword">let</span> openBtn : <span class="type">UIButton</span> = <span class="type">UIButton</span>()</div><div class="line">        openBtn.addTarget(<span class="keyword">self</span>, action: .open, <span class="keyword">for</span>: .touchUpInside)</div><div class="line">        view.addSubview(openBtn)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@objc</span> fileprivate <span class="function"><span class="keyword">func</span> <span class="title">open</span><span class="params">(sender: UIButton)</span></span> &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h3 id="Selector"><a href="#Selector" class="headerlink" title="Selector"></a>Selector</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">extension</span> <span class="title">Selector</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">let</span> open = #selector(<span class="type">TestViewController</span>.open(sender:))</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestViewController</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="keyword">let</span> openBtn : <span class="type">UIButton</span> = <span class="type">UIButton</span>()</div><div class="line">        openBtn.addTarget(<span class="keyword">self</span>, action: .open, <span class="keyword">for</span>: .touchUpInside)</div><div class="line">        view.addSubview(openBtn)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@objc</span> fileprivate <span class="function"><span class="keyword">func</span> <span class="title">open</span><span class="params">(sender: UIButton)</span></span> &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>用<code>Extension</code>的方式去扩展<code>Selector</code>，在会使用到<code>Selector</code>的情况下，调用是极其优雅的。比如<code>UIButton</code>的<code>Action</code>，<code>Notification</code>等</p>
 <h3 id="UIView…"><a href="#UIView…" class="headerlink" title="UIView…"></a>UIView…</h3><p>在写一个view的时候，通常是这样去写的——</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> view : <span class="type">UIView</span> = <span class="type">UIView</span>()</div><div class="line">view.backgroundColor = .red</div></pre></td></tr></table></figure>
@@ -112,6 +112,13 @@
   <div class="article-footer">
     <div class="article-meta pull-left">
 
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/Swift/">Swift</a>
+    </span>
     
 
     

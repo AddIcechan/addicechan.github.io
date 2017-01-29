@@ -69,7 +69,7 @@
 
   <div class="article-top-meta">
     <span class="posted-on">
-      <a href="/2016/08/22/Charles抓包下载旧版本的App/" rel="bookmark">
+      <a href="/2016/08/22/charles_download_app_old_version/" rel="bookmark">
         <time class="entry-date published" datetime="2016-08-22T14:12:16.000Z">
           2016-08-22
         </time>
@@ -94,12 +94,12 @@
 <li><p>在<code>Charles</code>一大堆数据上，可以过滤处<code>itunes</code>。找到类似<code>pX-bug.itunes.apple.com</code>（X为数字）的，<code>Enable SSL Proxying</code>。</p>
 </li>
 <li><p>然后重新第二步操作，你会发现<code>Structure</code>下面，对应的<code>px-buy.itunes.apple.com</code>下面多出了一些内容。<code>WebObjects/MZBuy.woa/wa/buyProduct</code>，右键对其进行添加<code>breakpoints</code>。，点击<code>content</code>，查看其<code>XML</code>内容。注意：此处需要右键 -&gt; <code>Enable SSL Proxying</code></p>
-<p> <img src="/images/利用Charles通过iTunes下载旧版本的App/step4.png" alt="step4"></p>
+<p> <img src="/images/charles_download_app_old_version/step4.png" alt="step4"></p>
 </li>
 <li><p>在上述内容中，你需要找到一个<code>softwareVersionExternalIdentifiers</code>的字段，其中数组<code>array</code>所包含的就是该app的版本记录吧。</p>
 </li>
 <li><p>这时候，可以选择对该链接进行保存，事实上主要是为了记住这些版本记录。如下图。</p>
-<p> <img src="/images/利用Charles通过iTunes下载旧版本的App/step6.png" alt="step6"></p>
+<p> <img src="/images/charles_download_app_old_version/step6.png" alt="step6"></p>
 </li>
 <li><p>删除<code>iTunes</code>中正在下载的app，重新下载该app。此时，<code>Charles</code>中的<code>breakpoints</code>将被激活，前往<code>Charles</code>修改</p>
 </li>

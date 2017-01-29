@@ -81,8 +81,7 @@
   <div class="article-content">
     <div class="entry">
       
-        <h3 id="Selector"><a href="#Selector" class="headerlink" title="Selector"></a>Selector</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">extension</span> <span class="title">Selector</span> </span>&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">let</span> open = #selector(<span class="type">TestViewController</span>.open(sender:))</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestViewController</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="keyword">let</span> openBtn : <span class="type">UIButton</span> = <span class="type">UIButton</span>()</div><div class="line">        openBtn.addTarget(<span class="keyword">self</span>, action: .open, <span class="keyword">for</span>: .touchUpInside)</div><div class="line">        view.addSubview(openBtn)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@objc</span> fileprivate <span class="function"><span class="keyword">func</span> <span class="title">open</span><span class="params">(sender: UIButton)</span></span> &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>用<code>Extension</code>的方式去扩展<code>Selector</code>，在会使用到<code>Selector</code>的情况下，调用是极其优雅的。比如<code>UIButton</code>的<code>Action</code>，<code>Notification</code>等</p>
+        <p>最近，一直在使用<code>Swift</code>开发。对于这么才3岁的新生语言，好感度是一直在飙升，除去<code>Xcode</code>时不时变白，文本化😢。因此，以下算是整理一些开发中用到的小技巧吧。</p>
       
     </div>
 
@@ -141,33 +140,8 @@
   <div class="article-content">
     <div class="entry">
       
-        <p>看过一篇关于使用<code>fiddler</code>工具进行抓包，通过<code>iTunes</code>下载旧版本App的文章，但是这是<code>windows</code>平台下的。<a href="http://bbs.feng.com/read-htm-tid-10125110.html" target="_blank" rel="external">文章链接</a>。如果是<code>mac</code>平台呢？</p>
+        <p>看过一篇关于使用<code>fiddler</code>工具进行抓包，通过<code>iTunes</code>下载旧版本App的文章，但是这是<code>windows</code>平台下的。<a href="http://bbs.feng.com/read-htm-tid-10125110.html">文章链接</a>。如果是<code>mac</code>平台呢？</p>
 <p><code>fiddler</code>只有<code>windows</code>版本，这只是一个抓包工具。那么<code>mac</code>下，可以通过<code>Charles</code>进行抓包拦截，然后下载。</p>
-<p>步骤：</p>
-<ol>
-<li><p>打开<code>Charles</code>，注意：相关配置需要弄好，比如root证书什么的</p>
-</li>
-<li><p>打开<code>iTunes</code>，挑选任意一个app，进行下载，但app开始下载时，可以选择暂停，返回<code>Charles</code>查看</p>
-</li>
-<li><p>在<code>Charles</code>一大堆数据上，可以过滤处<code>itunes</code>。找到类似<code>pX-bug.itunes.apple.com</code>（X为数字）的，<code>Enable SSL Proxying</code>。</p>
-</li>
-<li><p>然后重新第二步操作，你会发现<code>Structure</code>下面，对应的<code>px-buy.itunes.apple.com</code>下面多出了一些内容。<code>WebObjects/MZBuy.woa/wa/buyProduct</code>，右键对其进行添加<code>breakpoints</code>。，点击<code>content</code>，查看其<code>XML</code>内容。注意：此处需要右键 -&gt; <code>Enable SSL Proxying</code></p>
-<p> <img src="/images/charles_download_app_old_version/step4.png" alt="step4"></p>
-</li>
-<li><p>在上述内容中，你需要找到一个<code>softwareVersionExternalIdentifiers</code>的字段，其中数组<code>array</code>所包含的就是该app的版本记录吧。</p>
-</li>
-<li><p>这时候，可以选择对该链接进行保存，事实上主要是为了记住这些版本记录。如下图。</p>
-<p> <img src="/images/charles_download_app_old_version/step6.png" alt="step6"></p>
-</li>
-<li><p>删除<code>iTunes</code>中正在下载的app，重新下载该app。此时，<code>Charles</code>中的<code>breakpoints</code>将被激活，前往<code>Charles</code>修改</p>
-</li>
-<li><p>在<code>Charles</code>中，此时看到所打断点的内容。<code>Edit Request</code>-&gt;<code>XML Text</code>。会看到<code>appExtVrsId</code>字段。其中的内容就是上述<code>5.</code>中看到的<code>softwareVersionExternalIdentifiers</code>的内容。此时需要将其替换成 任何一个你想要的版本，也就是其他的id。一个版本可能会对应多个id，所以具体还是得逐个尝试才能得到相应的版本。一般来说，<code>appExtVrsId</code>中默认的值都是最新版本的id。修改完毕后，<code>Execute</code>。</p>
-</li>
-<li><p>返回<code>iTunes</code>查看当前下载，等候完毕。完毕。如果提示出现下载插图什么的乱七八糟<code>Error</code>，那么就重新下载，试多几次就好了。</p>
-</li>
-</ol>
-<p>其实，说到底就是利用<code>Charles</code>，进行拦截修改，进而达成目标。</p>
-
       
     </div>
 
@@ -226,13 +200,7 @@
   <div class="article-content">
     <div class="entry">
       
-        <p>使用<code>Touch ID</code>主要是用到 <code>LocalAuthentication</code>。这个库是<code>iOS8</code>之后才有的。在使用上，其实不难，主要是两个方法：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">canEvaluatePolicy</span><span class="params">(policy: LAPolicy, error: NSErrorPointer)</span></span> -&gt; <span class="type">Bool</span></div></pre></td></tr></table></figure></p>
-<p>该方法是用于判断设备是否支持使用<code>Touch ID</code></p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">evaluatePolicy</span><span class="params">(policy: LAPolicy, localizedReason: String, reply: <span class="params">(Bool, NSError?)</span></span></span> -&gt; <span class="type">Void</span>)</div></pre></td></tr></table></figure>
-<p>该方法则是进行<code>Touch ID</code>验证后的处理。</p>
-<p><code>Demo</code>代码。基于<code>Swift 2.0</code>。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"><span class="keyword">import</span> LocalAuthentication</div><div class="line">	</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> lacontext : <span class="type">LAContext</span> = <span class="type">LAContext</span>()</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">    <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">unlockAction</span><span class="params">(sender: AnyObject)</span></span> &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> <span class="keyword">self</span>.lacontext.canEvaluatePolicy(<span class="type">LAPolicy</span>.<span class="type">DeviceOwnerAuthenticationWithBiometrics</span>, error: <span class="literal">nil</span>) &#123;</div><div class="line">            lacontext .evaluatePolicy(.<span class="type">DeviceOwnerAuthenticationWithBiometrics</span>, localizedReason: <span class="string">"解锁验证"</span>, reply: &#123; (success : <span class="type">Bool</span>, error : <span class="type">NSError</span>?) <span class="keyword">in</span></div><div class="line">                <span class="keyword">if</span> success &#123;</div><div class="line">                    <span class="built_in">print</span>(<span class="string">"解锁成功"</span>)</div><div class="line">                    <span class="comment">// 更新UI etc.</span></div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="built_in">print</span>(<span class="string">"错误码： <span class="subst">\(error!.code)</span>"</span>)</div><div class="line">                    </div><div class="line">                &#125;</div><div class="line">            &#125;)</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="built_in">print</span>(<span class="string">"该设备无法支持 touch id"</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+        <p>简单说下<code>Touch ID</code>吧。老生常谈。</p>
       
     </div>
 

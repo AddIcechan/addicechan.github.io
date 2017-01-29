@@ -10,7 +10,7 @@
   
 
   
-  <meta name="description" content="使用Touch ID主要是用到 LocalAuthentication。这个库是iOS8之后才有的。在使用上，其实不难，主要是两个方法：1public func canEvaluatePolicy(policy: LAPolicy, error: NSErrorPointer) -&amp;gt; Bool">
+  <meta name="description" content="简单说下Touch ID吧。老生常谈。">
   
 
   
@@ -85,7 +85,9 @@
   <div class="article-content">
     <div class="entry">
       
-        <p>使用<code>Touch ID</code>主要是用到 <code>LocalAuthentication</code>。这个库是<code>iOS8</code>之后才有的。在使用上，其实不难，主要是两个方法：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">canEvaluatePolicy</span><span class="params">(policy: LAPolicy, error: NSErrorPointer)</span></span> -&gt; <span class="type">Bool</span></div></pre></td></tr></table></figure></p>
+        <p>简单说下<code>Touch ID</code>吧。老生常谈。</p>
+<a id="more"></a>
+<p>使用<code>Touch ID</code>主要是用到 <code>LocalAuthentication</code>。这个库是<code>iOS8</code>之后才有的。在使用上，其实不难，主要是两个方法：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">canEvaluatePolicy</span><span class="params">(policy: LAPolicy, error: NSErrorPointer)</span></span> -&gt; <span class="type">Bool</span></div></pre></td></tr></table></figure></p>
 <p>该方法是用于判断设备是否支持使用<code>Touch ID</code></p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">evaluatePolicy</span><span class="params">(policy: LAPolicy, localizedReason: String, reply: <span class="params">(Bool, NSError?)</span></span></span> -&gt; <span class="type">Void</span>)</div></pre></td></tr></table></figure>
 <p>该方法则是进行<code>Touch ID</code>验证后的处理。</p>

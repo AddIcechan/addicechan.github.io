@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>AddIce</title>
+
+  
+  <meta name="author" content="六叔">
+  
+
+  
+  <meta name="description" content="不靠谱男青年">
+  
+
+  
+  
+  <meta name="keywords" content="">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  
+
+  <meta property="og:site_name" content="AddIce"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="AddIce" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">AddIce</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span></span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2016/08/22/Charles抓包下载旧版本的App/" rel="bookmark">
+        <time class="entry-date published" datetime="2016-08-22T14:12:16.000Z">
+          2016-08-22
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="利用Charles通过iTunes下载旧版本的App"><a href="#利用Charles通过iTunes下载旧版本的App" class="headerlink" title="利用Charles通过iTunes下载旧版本的App"></a>利用<code>Charles</code>通过<code>iTunes</code>下载旧版本的<code>App</code></h2><p>看过一篇关于使用<code>fiddler</code>工具进行抓包，通过<code>iTunes</code>下载旧版本App的文章，但是这是<code>windows</code>平台下的。<a href="http://bbs.feng.com/read-htm-tid-10125110.html" target="_blank" rel="external">文章链接</a>。如果是<code>mac</code>平台呢？</p>
+<p><code>fiddler</code>只有<code>windows</code>版本，这只是一个抓包工具。那么<code>mac</code>下，可以通过<code>Charles</code>进行抓包拦截，然后下载。</p>
+<p>步骤：</p>
+<ol>
+<li><p>打开<code>Charles</code>，注意：相关配置需要弄好，比如root证书什么的</p>
+</li>
+<li><p>打开<code>iTunes</code>，挑选任意一个app，进行下载，但app开始下载时，可以选择暂停，返回<code>Charles</code>查看</p>
+</li>
+<li><p>在<code>Charles</code>一大堆数据上，可以过滤处<code>itunes</code>。找到类似<code>pX-bug.itunes.apple.com</code>（X为数字）的，<code>Enable SSL Proxying</code>。</p>
+</li>
+<li><p>然后重新第二步操作，你会发现<code>Structure</code>下面，对应的<code>px-buy.itunes.apple.com</code>下面多出了一些内容。<code>WebObjects/MZBuy.woa/wa/buyProduct</code>，右键对其进行添加<code>breakpoints</code>。，点击<code>content</code>，查看其<code>XML</code>内容。注意：此处需要右键 -&gt; <code>Enable SSL Proxying</code></p>
+<p> <img src="/images/利用Charles通过iTunes下载旧版本的App/step4.png" alt="step4"></p>
+</li>
+<li><p>在上述内容中，你需要找到一个<code>softwareVersionExternalIdentifiers</code>的字段，其中数组<code>array</code>所包含的就是该app的版本记录吧。</p>
+</li>
+<li><p>这时候，可以选择对该链接进行保存，事实上主要是为了记住这些版本记录。如下图。</p>
+<p> <img src="/images/利用Charles通过iTunes下载旧版本的App/step6.png" alt="step6"></p>
+</li>
+<li><p>删除<code>iTunes</code>中正在下载的app，重新下载该app。此时，<code>Charles</code>中的<code>breakpoints</code>将被激活，前往<code>Charles</code>修改</p>
+</li>
+<li><p>在<code>Charles</code>中，此时看到所打断点的内容。<code>Edit Request</code>-&gt;<code>XML Text</code>。会看到<code>appExtVrsId</code>字段。其中的内容就是上述<code>5.</code>中看到的<code>softwareVersionExternalIdentifiers</code>的内容。此时需要将其替换成 任何一个你想要的版本，也就是其他的id。一个版本可能会对应多个id，所以具体还是得逐个尝试才能得到相应的版本。一般来说，<code>appExtVrsId</code>中默认的值都是最新版本的id。修改完毕后，<code>Execute</code>。</p>
+</li>
+<li><p>返回<code>iTunes</code>查看当前下载，等候完毕。完毕。如果提示出现下载插图什么的乱七八糟<code>Error</code>，那么就重新下载，试多几次就好了。</p>
+</li>
+</ol>
+<p>其实，说到底就是利用<code>Charles</code>，进行拦截修改，进而达成目标。</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2017 六叔
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

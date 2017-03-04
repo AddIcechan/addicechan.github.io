@@ -10,7 +10,7 @@
   
 
   
-  <meta name="description" content="项目target太多？发测上传，改version改到抽筋？那么，骚年，你应该使用agvtool(Apple Generic Versioning Tool)，从此踏上精(yin)彩(luan)人生。">
+  <meta name="description" content="现在开发的项目，使用的target太多，每次一到发测、上传就很头疼。总得一个个target去修改新的版本号。直到发现，爸爸居然有一个agvtool的工具。">
   
 
   
@@ -52,9 +52,7 @@
       
         <li><a href="/">Home</a></li>
       
-        <li><a href="/categories/Swift">Swift</a></li>
-      
-        <li><a href="/categories/Objective-C">Objective-C</a></li>
+        <li><a href="/categories/iOS">iOS</a></li>
       
         <li><a href="/categories/Others">Others</a></li>
       
@@ -89,12 +87,8 @@
   <div class="article-content">
     <div class="entry">
       
-        <p>项目<code>target</code>太多？发测上传，改<code>version</code>改到抽筋？那么，骚年，你应该使用<code>agvtool</code>(Apple Generic Versioning Tool)，从此踏上精(yin)彩(luan)人生。</p>
+        <p>现在开发的项目，使用的<code>target</code>太多，每次一到发测、上传就很头疼。总得一个个<code>target</code>去修改新的版本号。直到发现，<code>爸爸</code>居然有一个<code>agvtool</code>的工具。</p>
 <a id="more"></a>
-<p>开发的项目，使用的<code>target</code>太多，每次一到发测、上传就很头疼。总得一个个<code>target</code>去修改新的版本号。</p>
-<p><img src="/images/agvtool/agvtool_p1.jpg" alt="p1"></p>
-<p>后来发现，<code>爸爸</code>居然有一个<code>agvtool</code>的工具。</p>
-<p><img src="/images/agvtool/agvtool_p2.jpg" alt="p2"></p>
 <p>先上个<a href="https://developer.apple.com/library/content/qa/qa1827/_index.html" target="_blank" rel="external">官方链接</a></p>
 <p>1、首先，需要确保工程中的<code>Info.plist</code>存在两个<code>Key</code>——<code>CFBundleVersion</code>和<code>CFBundleShortVersionString</code>。不过，貌似一般都是有的。</p>
 <p>2、需要修改<code>build setting</code>的一些配置。<code>Current Project Version</code>和<code>Versioning System</code>。需要将<code>Versioning System</code>设置成<code>Apple Generic</code>。这样才能确保正常使用<code>agvtool</code>。</p>

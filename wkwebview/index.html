@@ -1,0 +1,822 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="dbsXy9PpVD6oyAoaxfmmd-xPyqj5acs3fpxsiE46zJA"" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Swift," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="WKWebView是  在iOS 8后推出要替代UIWebView。相对于成熟的UIWebView来讲，这个后生仔在使用上还是有点点小坑的～">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WKWebView 的一些小总结">
+<meta property="og:url" content="http://yoursite.com/wkwebview/index.html">
+<meta property="og:site_name" content="ADDICE">
+<meta property="og:description" content="WKWebView是  在iOS 8后推出要替代UIWebView。相对于成熟的UIWebView来讲，这个后生仔在使用上还是有点点小坑的～">
+<meta property="og:image" content="http://yoursite.com/images/wkwebview/p1.png">
+<meta property="og:image" content="http://yoursite.com/images/wkwebview/p2.png">
+<meta property="og:updated_time" content="2017-07-29T12:05:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WKWebView 的一些小总结">
+<meta name="twitter:description" content="WKWebView是  在iOS 8后推出要替代UIWebView。相对于成熟的UIWebView来讲，这个后生仔在使用上还是有点点小坑的～">
+<meta name="twitter:image" content="http://yoursite.com/images/wkwebview/p1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/wkwebview/"/>
+
+
+
+
+
+  <title> WKWebView 的一些小总结 | ADDICE </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '93048380-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ADDICE</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/wkwebview/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="六叔">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ADDICE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                WKWebView 的一些小总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-25T22:49:17+08:00">
+                2017-07-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/wkwebview/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="wkwebview/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><code>WKWebView</code>是  在<code>iOS 8</code>后推出要替代<code>UIWebView</code>。相对于成熟的<code>UIWebView</code>来讲，这个后生仔在使用上还是有点点小坑的～</p>
+<p><img src="/images/wkwebview/p1.png" alt="p1"></p>
+<a id="more"></a>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>在初始化上，<code>WKWebView</code> 和 <code>UIWebView</code> 没有多大的差异。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// WKWebView</span></div><div class="line"><span class="keyword">let</span> wkWeb = <span class="type">WKWebView</span>(frame: view.bounds)</div><div class="line"><span class="comment">// 一些代理</span></div><div class="line">wkWeb.navigationDelegate = <span class="keyword">self</span></div><div class="line">wkWeb.uiDelegate = <span class="keyword">self</span></div><div class="line"></div><div class="line"><span class="comment">// UIWebView</span></div><div class="line"><span class="keyword">let</span> web = <span class="type">UIWebView</span>(frame: view.bounds)</div><div class="line"><span class="comment">// 一些代理</span></div><div class="line">web.delegate = <span class="keyword">self</span></div></pre></td></tr></table></figure>
+<p>二者在初始化上还是蛮像的。一个图样的我。（逃</p>
+<p>仔细翻开了<code>WKWebView</code>，发现其还提供一个初始化方法。</p>
+<blockquote>
+<p>   public init(frame: CGRect, configuration: WKWebViewConfiguration)</p>
+</blockquote>
+<p>也就是可以用<code>WKWebViewConfiguration</code> 去<code>init</code>一个<code>WKWebView</code>。</p>
+<p>后面再继续港 <code>WKWebViewConfiguration</code>。</p>
+<h3 id="那几个协议"><a href="#那几个协议" class="headerlink" title="那几个协议"></a>那几个协议</h3><h4 id="1、WKNavigationDelegate"><a href="#1、WKNavigationDelegate" class="headerlink" title="1、WKNavigationDelegate"></a>1、WKNavigationDelegate</h4><p><code>WKNavigationDelegate</code>的协议方法还是挺多的。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 1）接受网页信息，决定是否加载还是取消。必须执行肥调 decisionHandler 。逃逸闭包的属性</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">webView</span><span class="params">(<span class="number">_</span> webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping <span class="params">(WKNavigationActionPolicy)</span></span></span> -&gt; <span class="type">Void</span>) &#123;</div><div class="line">	<span class="built_in">print</span>(<span class="string">"<span class="subst">\(#function)</span>"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 2) 开始加载</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">webView</span><span class="params">(<span class="number">_</span> webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!)</span></span> &#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"<span class="subst">\(#function)</span>"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 3) 接受到网页 response 后, 可以根据 statusCode 决定是否 继续加载。allow or cancel, 必须执行肥调 decisionHandler 。逃逸闭包的属性</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">webView</span><span class="params">(<span class="number">_</span> webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping <span class="params">(WKNavigationResponsePolicy)</span></span></span> -&gt; <span class="type">Void</span>) &#123;</div><div class="line">	<span class="built_in">print</span>(<span class="string">"<span class="subst">\(#function)</span>"</span>)</div><div class="line">   <span class="keyword">guard</span> <span class="keyword">let</span> httpResponse = navigationResponse.response <span class="keyword">as</span>? <span class="type">HTTPURLResponse</span> <span class="keyword">else</span> &#123;</div><div class="line">        decisionHandler(.allow)</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> policy : <span class="type">WKNavigationResponsePolicy</span> = httpResponse.statusCode == <span class="number">200</span> ? .allow : .cancel</div><div class="line">    decisionHandler(policy)        </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 4) 网页加载成功 </span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">webView</span><span class="params">(<span class="number">_</span> webView: WKWebView, didFinish navigation: WKNavigation!)</span></span> &#123;</div><div class="line">	<span class="built_in">print</span>(<span class="string">"<span class="subst">\(#function)</span>"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 4) 加载失败</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">webView</span><span class="params">(<span class="number">_</span> webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error)</span></span> &#123;</div><div class="line">	<span class="built_in">print</span>(<span class="string">"<span class="subst">\(#function)</span>"</span>)</div><div class="line">   <span class="built_in">print</span>(error.localizedDescription)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="2、WKUIDelegate"><a href="#2、WKUIDelegate" class="headerlink" title="2、WKUIDelegate"></a>2、WKUIDelegate</h4><p>主要讲讲网页<code>js</code>的一些函数——</p>
+<ul>
+<li><code>alert()</code></li>
+<li><code>comfirm()</code></li>
+<li><code>prompt()</code></li>
+</ul>
+<p>在<code>UIWebView</code>中，<code>js</code>使用上述三个函数，是可以成功弹出的。但是在<code>WKWebView</code>中，使用着三个函数，是不会用任何反应的。原因是，把这三个函数都分别封装到<code>WKUIDelegate</code>的方法中。但<code>js</code>使用这些函数时，那么客户端会在以下几个协议方法中，监测到发送过来的信息，然后需要用原生代码去实现一个<code>alert</code>。累cry～～～</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// MARK: alert</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">webView</span><span class="params">(<span class="number">_</span> webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping <span class="params">()</span></span></span> -&gt; <span class="type">Void</span>) &#123;</div><div class="line">	<span class="keyword">let</span> alert = <span class="type">UIAlertController</span>(title: <span class="string">"这是本地代码弹窗"</span>, message: message, preferredStyle: .alert)</div><div class="line">    lert.addAction(<span class="type">UIAlertAction</span>(title: <span class="string">"ok"</span>, style: .cancel, handler: &#123; <span class="number">_</span> <span class="keyword">in</span></div><div class="line">            <span class="comment">// 必须加入这个 肥调，不然会闪 （逃</span></div><div class="line">        completionHandler()</div><div class="line">  &#125;))</div><div class="line">    present(alert, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">&#125;</div><div class="line">    </div><div class="line"><span class="comment">// MARK: comfirm</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">webView</span><span class="params">(<span class="number">_</span> webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping <span class="params">(Bool)</span></span></span> -&gt; <span class="type">Void</span>) &#123;</div><div class="line">    <span class="keyword">let</span> alert = <span class="type">UIAlertController</span>(title: <span class="string">"这是本地代码弹窗"</span>, message: message, preferredStyle: .alert)</div><div class="line">    alert.addAction(<span class="type">UIAlertAction</span>(title: <span class="string">"❤️"</span>, style: .<span class="keyword">default</span>, handler: &#123; <span class="number">_</span> <span class="keyword">in</span></div><div class="line">        completionHandler(<span class="literal">true</span>)</div><div class="line">    &#125;))</div><div class="line">    alert.addAction(<span class="type">UIAlertAction</span>(title: <span class="string">"不❤️"</span>, style: .<span class="keyword">default</span>, handler: &#123; <span class="number">_</span> <span class="keyword">in</span></div><div class="line">        completionHandler(<span class="literal">false</span>)</div><div class="line">    &#125;))</div><div class="line">    present(alert, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">&#125;</div><div class="line">    </div><div class="line"><span class="comment">// MARK: prompt</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">webView</span><span class="params">(<span class="number">_</span> webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping <span class="params">(String?)</span></span></span> -&gt; <span class="type">Void</span>) &#123;</div><div class="line">    </div><div class="line">    <span class="keyword">let</span> alert = <span class="type">UIAlertController</span>(title: <span class="string">"这是本地代码弹窗"</span>, message: prompt, preferredStyle: .alert)</div><div class="line">    alert.addTextField &#123; textField <span class="keyword">in</span></div><div class="line">        textField.placeholder = defaultText</div><div class="line">    &#125;</div><div class="line">    alert.addAction(<span class="type">UIAlertAction</span>(title: <span class="string">"ok"</span>, style: .<span class="keyword">default</span>, handler: &#123; <span class="number">_</span> <span class="keyword">in</span></div><div class="line">        completionHandler(alert.textFields?.last?.text)</div><div class="line">    &#125;))</div><div class="line">    present(alert, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h3><h4 id="1、网页适配"><a href="#1、网页适配" class="headerlink" title="1、网页适配"></a>1、网页适配</h4><p>有些网页在客户端上显示，会出现一些不适配的情况。使用<code>UIWebView</code>的话，我们可以用使用其的<code>scaleToFit</code>属性。即<code>webView.scaleToFit = true</code>。但是在<code>WKWebView</code>里，并没有这个属性，我们只能使用到<code>JS注入</code>进行修改。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 这句相当于给网页注入一个 &lt;meta&gt; 标签，&lt;meta name="viewport" content="width=device-width"&gt;</span></div><div class="line"><span class="keyword">let</span> jsToScaleFit = <span class="string">"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);"</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> scaleToFitScript = <span class="type">WKUserScript</span>(source: jsToScaleFit, injectionTime: .atDocumentEnd, forMainFrameOnly: <span class="literal">true</span>)</div><div class="line">        </div><div class="line"><span class="keyword">let</span> userController = <span class="type">WKUserContentController</span>()</div><div class="line">userController.addUserScript(scaleToFitScript)</div><div class="line">        </div><div class="line"><span class="keyword">let</span> config = <span class="type">WKWebViewConfiguration</span>()</div><div class="line">config.userContentController = userController</div><div class="line">        </div><div class="line"><span class="keyword">let</span> wkWeb = <span class="type">WKWebView</span>(frame: view.bounds, configuration: config!)</div></pre></td></tr></table></figure>
+<p>不过，还是不太推荐客户端去注入适配代码。最好还是告知前端，让他们去搞定这问题。个人觉得，两端少点干涉还是比较好滴～～～ （逃</p>
+<p>####2、客户端 -&gt; 网页</p>
+<p>有时间，我们需要客户端去调用前端的一些代码。e.g.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 比如获取网页内容高度</span></div><div class="line"><span class="keyword">let</span> jsToGetWebHeight = <span class="string">"document.body.offsetHeight"</span></div><div class="line"></div><div class="line">wkWeb?.evaluateJavaScript(jsToGetWebHeight, completionHandler: &#123; (data, error) <span class="keyword">in</span></div><div class="line">    <span class="built_in">print</span>(error?.localizedDescription ?? <span class="string">"执行正确"</span>)</div><div class="line">    <span class="comment">// data 是一个 any 类型，因此需要做好类型判断</span></div><div class="line">	<span class="keyword">if</span> <span class="keyword">let</span> webHeight : <span class="type">CGFloat</span> = data <span class="keyword">as</span>? <span class="type">CGFloat</span> &#123;</div><div class="line">		<span class="built_in">print</span>(webHeight)</div><div class="line">	&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h4 id="3、网页-gt-客户端"><a href="#3、网页-gt-客户端" class="headerlink" title="3、网页 -&gt; 客户端"></a>3、网页 -&gt; 客户端</h4><p>不像<code>UIWebView</code>，<code>WKWebView</code>无法使用<code>JaveSciptCore</code>。我们需要使用到<code>WKScriptMessageHandler</code>这个协议去进行一系列交互。</p>
+<p>首先，在初始化阶段，需要使用到<code>WKWebViewConfiguration</code>。放个文档注释先。</p>
+<blockquote>
+<p>   /*! @abstract Adds a script message handler.</p>
+<p>   @param scriptMessageHandler The message handler to add.</p>
+<p>   @param name The name of the message handler.</p>
+<p>   @discussion Adding a scriptMessageHandler adds a function<br>     window.webkit.messageHandlers.<name>.postMessage(<messagebody>) for all<br>     frames.<br>    */</messagebody></name></p>
+<p>   open func add(_ scriptMessageHandler: WKScriptMessageHandler, name: String)</p>
+</blockquote>
+<p><code>name</code>是客户端自定义好的一个字符串类型的命名空间。可以有多个<code>name</code>。网页的<code>js</code>代码，需要在进行交互的地方，使用上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">window.webkit.messageHandlers.&lt;name&gt;.postMessage(&lt;messageBody&gt;)</div></pre></td></tr></table></figure></p>
+<p>来发送消息。</p>
+<p>上个栗子🌰。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> conifg = <span class="type">WKWebViewConfiguration</span>()</div><div class="line">config.userContentController.add(<span class="keyword">self</span>, name: <span class="string">"Test"</span>)</div><div class="line"><span class="keyword">let</span> webView = <span class="type">WKWebView</span>(frame: view.bounds, configuration: config)</div></pre></td></tr></table></figure>
+<p>这是客户端使用<code>WKWebViewConfiguration</code>去初始化一个<code>WKWebView</code>。并且使用到一个<code>name</code>为<code>Test</code>的<code>messageHandler</code>。而在网页需要进行交互的位置，则是加在一句代码。🌰</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        </div><div class="line">        <span class="keyword">var</span> message = &#123;</div><div class="line">        	<span class="attr">action</span>: <span class="string">"test"</span>,</div><div class="line">        	<span class="attr">params</span>: <span class="literal">null</span>,  </div><div class="line">        	<span class="attr">callback</span>: <span class="string">"callback()"</span></div><div class="line">        &#125;;</div><div class="line">        <span class="built_in">window</span>.webkit.messageHandlers.Test.postMessage(message);</div><div class="line">	&#125;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
+<p>对应<code>messageBody</code>载体的格式，貌似没有多大的规定。可以为<code>NSNumber</code>, <code>NSString</code>, <code>NSDate</code>, <code>NSArray</code>, <code>NSDictionary</code>，甚至是<code>NSNull</code>。也就是对应<code>js</code>来说，应该是<code>Number</code>，<code>String</code>，<code>Date</code>，<code>json</code>，<code>null</code>。</p>
+<p>那么问题来了。客户端怎么去做处理呢？</p>
+<p>客户端需要去实现<code>WKScriptMessageHandler</code>的协议方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) &#123;</div><div class="line">	// 建议是做好判断，毕竟有可能 碰到多种 name 的情况</div><div class="line">	if message.name == &quot;Test&quot; &#123;</div><div class="line">		// 此处可以去撸 需要 的一些交互了</div><div class="line">		print(message.body)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="4、跳转app-store"><a href="#4、跳转app-store" class="headerlink" title="4、跳转app store"></a>4、跳转app store</h4><p><code>WKWebview</code>是无法直接跳转<code>app store</code>。不明白爸爸为什么要这样。反正他高兴就好。。。。<br>那么如果<code>PM</code>硬要跳转<code>app store</code>的话，有两种方式——</p>
+<p>1) 砍死<code>PM</code>。。（ps: 个人极度推荐方式一）</p>
+<p>2）那么你只能苦逼码码去解决了。</p>
+<p>在<code>WKNavigationDelegate</code>中，当接受到网页信息的时候，也就是——</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">webView</span><span class="params">(<span class="number">_</span> webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping <span class="params">(WKNavigationActionPolicy)</span></span></span> -&gt; <span class="type">Void</span>) &#123;</div><div class="line">	<span class="keyword">let</span> request = navigationAction.request</div><div class="line">	   </div><div class="line">	<span class="keyword">if</span> <span class="keyword">let</span> url = request.url &#123;</div><div class="line">		<span class="keyword">if</span> url.host == <span class="string">"itunes.apple.com"</span> &#123;</div><div class="line">	       <span class="type">UIApplication</span>.shared.openURL(url)</div><div class="line">	       decisionHandler(.cancel)</div><div class="line">	   &#125;</div><div class="line">	&#125;</div><div class="line">		</div><div class="line">	decisionHandler(.allow)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="5、有一些古怪的需求"><a href="#5、有一些古怪的需求" class="headerlink" title="5、有一些古怪的需求"></a>5、有一些古怪的需求</h4><p>某天，<code>PM</code>跑过来跟你港，想要点击一个网页超链接，然后客户端去<code>push controller</code>，而不是在原页面上刷新。。。</p>
+<p>使用<code>UIWebView</code>的时候，其实挺方便的，只需要在<code>UIWebViewDelegate</code>的一个方法中去监听做判断就好。呐。看🌰。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">webView</span><span class="params">(<span class="number">_</span> webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">    <span class="keyword">if</span> navigationType == .linkClicked &#123;</div><div class="line">        <span class="keyword">guard</span> <span class="keyword">let</span> url = request.url?.absoluteString <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">        &#125;</div><div class="line">		<span class="comment">// 此处 push 一个 新的 controller 吧</span></div><div class="line">		</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>但是，<code>WKWebView</code>呢？</p>
+<p>需要在<code>WKNavigationDelegate</code>协议方法中，当接收到网页信息的时候——</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">webView</span><span class="params">(<span class="number">_</span> webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping <span class="params">(WKNavigationActionPolicy)</span></span></span> -&gt; <span class="type">Void</span>) &#123;</div><div class="line">    <span class="keyword">let</span> request = navigationAction.request</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> url = request.url &#123;</div><div class="line">	<span class="comment">// 2、检测打开 &lt;a href&gt; 标签 。如果要打开一个 新web，那么需要 &lt;a href="xx" target="_blank" &gt;，若无 target="_blank"，则只会在原web基础上 reload</span></div><div class="line">         <span class="keyword">if</span> navigationAction.targetFrame == <span class="literal">nil</span> &#123;</div><div class="line">            <span class="comment">// 这里做 push 新的 webview 操作</span></div><div class="line">                       </div><div class="line">        &#125;  </div><div class="line">    &#125;</div><div class="line">    decisionHandler(.allow)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>暂时撸到这里吧。估计还有一些坑。后续继续踩，继续更新吧。</p>
+<p>最后，上个<a href="https://github.com/AddIcechan/WKWebViewDemo" target="_blank" rel="external">demo</a>吧。</p>
+<p><img src="/images/wkwebview/p2.png" alt="p1"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Swift/" rel="tag"># Swift</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/variadic_parameters/" rel="next" title="可变参数">
+                <i class="fa fa-chevron-left"></i> 可变参数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="wkwebview/"
+           data-title="WKWebView 的一些小总结" data-url="http://yoursite.com/wkwebview/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="六叔" />
+          <p class="site-author-name" itemprop="name">六叔</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/AddIcechan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/chjbking" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">1.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#那几个协议"><span class="nav-number">2.</span> <span class="nav-text">那几个协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、WKNavigationDelegate"><span class="nav-number">2.1.</span> <span class="nav-text">1、WKNavigationDelegate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、WKUIDelegate"><span class="nav-number">2.2.</span> <span class="nav-text">2、WKUIDelegate</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#踩坑"><span class="nav-number">3.</span> <span class="nav-text">踩坑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、网页适配"><span class="nav-number">3.1.</span> <span class="nav-text">1、网页适配</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、网页-gt-客户端"><span class="nav-number">3.2.</span> <span class="nav-text">3、网页 -> 客户端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、跳转app-store"><span class="nav-number">3.3.</span> <span class="nav-text">4、跳转app store</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、有一些古怪的需求"><span class="nav-number">3.4.</span> <span class="nav-text">5、有一些古怪的需求</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结束语"><span class="nav-number">4.</span> <span class="nav-text">结束语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">六叔</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"addice"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

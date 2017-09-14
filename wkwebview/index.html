@@ -403,7 +403,7 @@
 <p>   @discussion Adding a scriptMessageHandler adds a function<br>     window.webkit.messageHandlers.<name>.postMessage(<messagebody>) for all<br>     frames.<br>    */</messagebody></name></p>
 <p>   open func add(_ scriptMessageHandler: WKScriptMessageHandler, name: String)</p>
 </blockquote>
-<p><code>name</code>是客户端自定义好的一个字符串类型的命名空间。可以有多个<code>name</code>。网页的<code>js</code>代码，需要在进行交互的地方，使用上<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.webkit.messageHandlers.&lt;name&gt;.postMessage(&lt;messageBody&gt;)</div></pre></td></tr></table></figure></p>
+<p><code>name</code>是客户端自定义好的一个字符串类型的命名空间。可以有多个<code>name</code>。网页的<code>js</code>代码，需要在进行交互的地方，使用上<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.webkit.messageHandlers.&lt;name&gt;.postMessage(<span class="xml"><span class="tag">&lt;<span class="name">messageBody</span>&gt;</span>)</span></div></pre></td></tr></table></figure></p>
 <p>来发送消息。</p>
 <p>上个栗子🌰。</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> conifg = <span class="type">WKWebViewConfiguration</span>()</div><div class="line">config.userContentController.add(<span class="keyword">self</span>, name: <span class="string">"Test"</span>)</div><div class="line"><span class="keyword">let</span> webView = <span class="type">WKWebView</span>(frame: view.bounds, configuration: config)</div></pre></td></tr></table></figure>
@@ -557,7 +557,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -579,7 +579,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

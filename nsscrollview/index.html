@@ -73,7 +73,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Xcode," />
+  <meta name="keywords" content="Swift,macOS," />
 
 
 
@@ -89,19 +89,20 @@
 
 
 
-<meta name="description" content="现在开发的项目，使用的target太多，每次一到发测、上传就很头疼。总得一个个target去修改新的版本号。直到发现，爸爸居然有一个agvtool的工具。">
+<meta name="description" content="最近抽空看了些 macOS 开发的资料。（自嘲下：iOS 开发都不是很会，就开始搞 macOS 开发。。）一开始觉得 macOS 和 iOS 估计差不多。但是呢，习惯 UIKit，再去碰 Appkit 这个古老的框架。只能说两者真不是一码事。。。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用agvtool更改app version／build">
-<meta property="og:url" content="http://yoursite.com/agvtool/index.html">
+<meta property="og:title" content="macOS 开发：NSScrollView 学习笔记">
+<meta property="og:url" content="http://yoursite.com/nsscrollview/index.html">
 <meta property="og:site_name" content="ADDICE">
-<meta property="og:description" content="现在开发的项目，使用的target太多，每次一到发测、上传就很头疼。总得一个个target去修改新的版本号。直到发现，爸爸居然有一个agvtool的工具。">
-<meta property="og:image" content="http://yoursite.com/images/agvtool/agvtool_p3.png">
-<meta property="og:image" content="http://yoursite.com/images/agvtool/agvtool_p4.jpg">
-<meta property="og:updated_time" content="2017-07-29T12:05:48.000Z">
+<meta property="og:description" content="最近抽空看了些 macOS 开发的资料。（自嘲下：iOS 开发都不是很会，就开始搞 macOS 开发。。）一开始觉得 macOS 和 iOS 估计差不多。但是呢，习惯 UIKit，再去碰 Appkit 这个古老的框架。只能说两者真不是一码事。。。">
+<meta property="og:image" content="http://yoursite.com/images/nscrollview/p1.png">
+<meta property="og:image" content="http://yoursite.com/images/nscrollview/p2.png">
+<meta property="og:image" content="http://yoursite.com/images/nscrollview/p3.jpg">
+<meta property="og:updated_time" content="2017-11-19T14:16:55.585Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用agvtool更改app version／build">
-<meta name="twitter:description" content="现在开发的项目，使用的target太多，每次一到发测、上传就很头疼。总得一个个target去修改新的版本号。直到发现，爸爸居然有一个agvtool的工具。">
-<meta name="twitter:image" content="http://yoursite.com/images/agvtool/agvtool_p3.png">
+<meta name="twitter:title" content="macOS 开发：NSScrollView 学习笔记">
+<meta name="twitter:description" content="最近抽空看了些 macOS 开发的资料。（自嘲下：iOS 开发都不是很会，就开始搞 macOS 开发。。）一开始觉得 macOS 和 iOS 估计差不多。但是呢，习惯 UIKit，再去碰 Appkit 这个古老的框架。只能说两者真不是一码事。。。">
+<meta name="twitter:image" content="http://yoursite.com/images/nscrollview/p1.png">
 
 
 
@@ -129,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/agvtool/"/>
+  <link rel="canonical" href="http://yoursite.com/nsscrollview/"/>
 
 
 
 
 
-  <title> 使用agvtool更改app version／build | ADDICE </title>
+  <title> macOS 开发：NSScrollView 学习笔记 | ADDICE </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -263,7 +264,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/agvtool/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/nsscrollview/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="六叔">
@@ -284,7 +285,7 @@
             
             
               
-                使用agvtool更改app version／build
+                macOS 开发：NSScrollView 学习笔记
               
             
           </h1>
@@ -299,8 +300,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-05T21:16:11+08:00">
-                2017-03-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-16T15:08:32+08:00">
+                2017-11-16
               </time>
             
 
@@ -322,8 +323,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Others/" itemprop="url" rel="index">
-                    <span itemprop="name">Others</span>
+                  <a href="/categories/macOS/" itemprop="url" rel="index">
+                    <span itemprop="name">macOS</span>
                   </a>
                 </span>
 
@@ -340,8 +341,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/agvtool/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="agvtool/" itemprop="commentCount"></span>
+                <a href="/nsscrollview/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="nsscrollview/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -367,30 +368,29 @@
       
 
       
-        <p>现在开发的项目，使用的<code>target</code>太多，每次一到发测、上传就很头疼。总得一个个<code>target</code>去修改新的版本号。直到发现，<code>爸爸</code>居然有一个<code>agvtool</code>的工具。</p>
+        <p>最近抽空看了些 macOS 开发的资料。（自嘲下：iOS 开发都不是很会，就开始搞 macOS 开发。。）一开始觉得 macOS 和 iOS 估计差不多。但是呢，习惯 UIKit，再去碰 Appkit 这个古老的框架。只能说两者真不是一码事。。。</p>
 <a id="more"></a>
-<p>先上个<a href="https://developer.apple.com/library/content/qa/qa1827/_index.html" target="_blank" rel="external">官方链接</a></p>
-<p>1、首先，需要确保工程中的<code>Info.plist</code>存在两个<code>Key</code>——<code>CFBundleVersion</code>和<code>CFBundleShortVersionString</code>。不过，貌似一般都是有的。</p>
-<p>2、需要修改<code>build setting</code>的一些配置。<code>Current Project Version</code>和<code>Versioning System</code>。需要将<code>Versioning System</code>设置成<code>Apple Generic</code>。这样才能确保正常使用<code>agvtool</code>。</p>
-<p><img src="/images/agvtool/agvtool_p3.png" alt="p3"></p>
-<p>3、打开工程目录，即<code>.xcodeproj</code>的所在。这时候就可以来使用<code>command line</code>了。</p>
-<hr>
-<p><code>agvtool</code>使用的一些<code>command line</code>。其中<code>marketing-version</code>对应是工程中的<code>version</code>，而<code>version</code>则对应着工程中的<code>build</code>.</p>
-<p>1）查看当前版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// build</div><div class="line">agvtool what-version</div><div class="line">// version</div><div class="line">agvtool what-marketing-version</div><div class="line">// build</div><div class="line">agvtool vers</div><div class="line">// version</div><div class="line">agvtool mvers</div></pre></td></tr></table></figure>
-<p>2)自动增加版本号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">agvtool next-version -all</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">agvtool bump -all</div></pre></td></tr></table></figure>
-<p>二者都是给<code>build</code>递增。<code>version</code>的话，没有递增的命令。<code>-all</code>可加可不加，但是不附带<code>-all</code>的话，会出现设置成功，但是打开工程看<code>build</code>的话，确是没有任何变化，还是旧版本的build。此时再去<code>agvtool bump -all</code>或者<code>agvtool next-version -all</code>。所有<code>build</code>,都会变化，而且是在上一部设置成功的数值上+1。此步已跪。。。。找到原因后，再来更新。。。</p>
-<p>3)设置新版本号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// build</div><div class="line">agvtool new-version -all 1.0.0</div><div class="line">// version</div><div class="line">agvtool new-marketing-version 1.0.0</div></pre></td></tr></table></figure>
-<p>4) help<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">agvtool help</div></pre></td></tr></table></figure></p>
-<p>如果想了解更多，直接一句<code>command line</code>——<code>agvtool help</code>，可以查看相关的使用。</p>
-<hr>
-<p><em>中途遇到的坑</em></p>
-<p>在使用的过程，发现某个<code>target</code>的<code>version</code>和<code>build</code>都没有任何变化。错误提示一直显示——<code>Cannot find &quot;$(SRCROOT)／Info.plist</code>。后来在<code>build setting</code>的<code>Info.plist</code>目录设置，发现多了<code>$(SRCROOT)</code>，去掉后，<code>agvtool new-marketing-version x.x.x</code>，<code>agvtool new-version x.x.x -all</code>。完美解决。</p>
-<p>PS：后续有任何发现，再继续来更新吧。。</p>
-<p><img src="/images/agvtool/agvtool_p4.jpg" alt="p4"></p>
+<p>官方有份 NSScrollView 的<a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/NSScrollViewGuide/Articles/Introduction.html#//apple_ref/doc/uid/TP40003460-SW1" target="_blank" rel="external">教程</a>。写的挺详细。可以看下。</p>
+<p>Xcode 里面的文档没有很多的解释。有些连默认值都不知道有没有。使用 UIKit 时，遇到问题，跳到文档里面，很多情况下会有相应解释等。但是 AppKit 的话，大部分都没有多少解释。估计又是一个历史包袱吧～</p>
+<p>那么如何去创建一个 NSScrollView？</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> scrollView = <span class="type">NSScrollView</span>()</div><div class="line"><span class="keyword">let</span> scrollView = <span class="type">NSScrollView</span>(frame: <span class="type">NSRect</span>())</div></pre></td></tr></table></figure>
+<p>这个和 UIScrollView 几乎一致。</p>
+<p>UIKit 中，我们可以通过设置 UIScrollView 的 contentSize 来进行可滑动的操作。但是呢，在 <code>NSScrollView</code> 里，并没有 contentSize 供我们设置，取而代之的是 documentView。当我们要使用一个 NSScrollView 的时候，需要把 conentView 指向 scrollView 的 documentView。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> contentView = <span class="type">NSView</span>(frame: <span class="type">NSRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="number">1000</span>, height: <span class="number">1000</span>))</div><div class="line">contentView.backgroundColor = .yellow</div><div class="line">bgScrollView.documentView = contentView</div></pre></td></tr></table></figure>
+<p>在官方的教程中，解释的很清楚。</p>
+<p><img src="/images/nscrollview/p1.png" alt="p1"></p>
+<p>NSScrollView 是由 NSScroller\NSClipView\ContentView\NSRulerView 构成的。这个可以选择用 IB 构建一个 NSScrollView 来查看，比较直观。</p>
+<p><img src="/images/nscrollview/p2.png" alt="p2"></p>
+<p>Clip View ，是一个 NSClipView。也就是 scrollView 的一个 contentView<br> 的属性。官方的说法，负责剪切 documentView 的内容等。从 IB 的 图看到的层级，猜测 documentView 有可能就是这个 NSClipView 层级下的 view。</p>
+<p>NSScrollView 给人的感觉，更像一个迷你窗口，然后通过滚动 documentView 来使的内容出现在窗口里面。</p>
+<p>在使用上，一些属性配置可以见以下代码。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> scrollView = <span class="type">NSScrollView</span>()</div><div class="line">        </div><div class="line"><span class="comment">// scrollerStyle。overlay / legacy。 overlay 的效果，则是 scroller 背景透明，而 legacy 则是 独立出 scroller 的区域，看起来比较丑～～个人觉得😂</span></div><div class="line">scrollView.scrollerStyle = .overlay</div><div class="line">    </div><div class="line"><span class="comment">// 滚动条的显示。用 IB 创建 scrollview 时，以下两个参数均为 true。但是 code 创建 scrollview 时，以下两个参数默认均为 false。很奇怪的设计。</span></div><div class="line">scrollView.hasVerticalScroller = <span class="literal">true</span></div><div class="line">scrollView.hasHorizontalScroller = <span class="literal">true</span></div><div class="line">    </div><div class="line"><span class="comment">// 滚动条的样式：light、 dark、default。default 的话，其实就是 dark</span></div><div class="line">scrollView.scrollerKnobStyle = .dark</div><div class="line">    </div><div class="line"><span class="comment">//  bounce 的效果。elasticity 是弹性的含义。automatic\allowed\none。</span></div><div class="line">scrollView.horizontalScrollElasticity = .automatic</div><div class="line">scrollView.verticalScrollElasticity = .automatic</div></pre></td></tr></table></figure>
+<p>由于 macOS 的坐标起点是在屏幕左下角。因此，在设置好 documentView 后，最好让 scrollView 滚到最上方的位置。为了方便，直接用 extension 增加了一个 scrollToTop 的方法。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">NSScrollView</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="comment">/// Scroll to the ducument view top. </span></div><div class="line">    <span class="keyword">public</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">scrollToTop</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">if</span> <span class="keyword">let</span> documentView = <span class="keyword">self</span>.documentView &#123;</div><div class="line">            <span class="keyword">if</span> documentView.isFlipped &#123;</div><div class="line">                documentView.scroll(.zero)</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">let</span> maxHeight = <span class="built_in">max</span>(bounds.height, documentView.bounds.height)</div><div class="line">                documentView.scroll(<span class="type">NSPoint</span>(x: <span class="number">0</span>, y: maxHeight))</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 滚动到最上方</span></div><div class="line">scrollView.scrollToTop()</div></pre></td></tr></table></figure>
+<p>其中，isFlipped 是坐标系翻转。是 NSView 的一个属性。</p>
+<p>当然，NSScrollView 并非只有这么简简单单几行代码。还有一些设置。比如 scrollerInsets 是设置 NSScroller 的边距等。另外，还有一些通知，可以进行一些事件的监听。</p>
+<p>最后上个<a href="https://github.com/AddIcechan/mac_develop/tree/master/macDev/NSScrollViewDemo" target="_blank" rel="external">demo</a>。</p>
+<p><img src="/images/nscrollview/p3.jpg" alt="p3"></p>
 
       
     </div>
@@ -420,7 +420,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Xcode/" rel="tag"># Xcode</a>
+            <a href="/tags/Swift/" rel="tag"># Swift</a>
+          
+            <a href="/tags/macOS/" rel="tag"># macOS</a>
           
         </div>
       
@@ -433,8 +435,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/multiple_git_account_ssh/" rel="next" title="GitHub 和 Gitlab 共存">
-                <i class="fa fa-chevron-left"></i> GitHub 和 Gitlab 共存
+              <a href="/ios11_something/" rel="next" title="iOS 11 的一些玩意儿：乱七杂八">
+                <i class="fa fa-chevron-left"></i> iOS 11 的一些玩意儿：乱七杂八
               </a>
             
           </div>
@@ -442,10 +444,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/swift_use/" rel="prev" title="整理Swift开发用到的一些小技巧">
-                整理Swift开发用到的一些小技巧 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -471,8 +469,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="agvtool/"
-           data-title="使用agvtool更改app version／build" data-url="http://yoursite.com/agvtool/">
+      <div class="ds-thread" data-thread-key="nsscrollview/"
+           data-title="macOS 开发：NSScrollView 学习笔记" data-url="http://yoursite.com/nsscrollview/">
       </div>
     
   </div>

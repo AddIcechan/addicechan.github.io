@@ -1,0 +1,808 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="dbsXy9PpVD6oyAoaxfmmd-xPyqj5acs3fpxsiE46zJA"" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Swift," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="整理下 Swift 的一些关键字。主要包括(不定时更新)：
+
+@inline(__always) &amp;nbsp;&amp;amp; @inline(never)
+@discardableResult
+mutating
+associatedtype
+Designated &amp;amp; Convenience &amp;amp; Required">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift —— 关键字">
+<meta property="og:url" content="http://yoursite.com/swift_keywords/index.html">
+<meta property="og:site_name" content="ADDICE">
+<meta property="og:description" content="整理下 Swift 的一些关键字。主要包括(不定时更新)：
+
+@inline(__always) &amp;nbsp;&amp;amp; @inline(never)
+@discardableResult
+mutating
+associatedtype
+Designated &amp;amp; Convenience &amp;amp; Required">
+<meta property="og:image" content="http://yoursite.com/images/swift_keywords/p1.png">
+<meta property="og:updated_time" content="2017-12-27T15:23:33.528Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift —— 关键字">
+<meta name="twitter:description" content="整理下 Swift 的一些关键字。主要包括(不定时更新)：
+
+@inline(__always) &amp;nbsp;&amp;amp; @inline(never)
+@discardableResult
+mutating
+associatedtype
+Designated &amp;amp; Convenience &amp;amp; Required">
+<meta name="twitter:image" content="http://yoursite.com/images/swift_keywords/p1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/swift_keywords/"/>
+
+
+
+
+
+  <title> Swift —— 关键字 | ADDICE </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '93048380-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ADDICE</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/swift_keywords/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="六叔">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ADDICE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Swift —— 关键字
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-27T23:07:23+08:00">
+                2017-12-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/swift_keywords/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="swift_keywords/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>整理下 Swift 的一些关键字。主要包括(不定时更新)：</p>
+<ul>
+<li>@inline(__always) &nbsp;&amp; @inline(never)</li>
+<li>@discardableResult</li>
+<li>mutating</li>
+<li>associatedtype</li>
+<li>Designated &amp; Convenience &amp; Required</li>
+</ul>
+<a id="more"></a>
+<h3 id="inline-always-nbsp-amp-inline-never"><a href="#inline-always-nbsp-amp-inline-never" class="headerlink" title="@inline(__always) &nbsp;&amp; @inline(never)"></a>@inline(__always) &nbsp;&amp; @inline(never)</h3><p>正如 C 语言中，可以是 inline 声明内联函数，Swift 也可以。只需要给函数表明 @inline(__always) 或者 @inline(never)</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@inline(never) <span class="function"><span class="keyword">func</span> <span class="title">testInlineNever</span><span class="params">()</span></span> &#123; &#125;</div><div class="line">@inline(__always) <span class="function"><span class="keyword">func</span> <span class="title">testInlineAlways</span><span class="params">()</span></span> &#123;&#125;</div></pre></td></tr></table></figure>
+<h3 id="discardableResult"><a href="#discardableResult" class="headerlink" title="@discardableResult"></a>@discardableResult</h3><p>在 Swift 中，使用一些有返回值的函数。如果没有用参数去承接，那么会有一些警告。一般，我们会用 let  _ = 返回值 来消灭这些警告。或者是 使用 @discardableResult 来表明方法，那么就不会有警告了。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">undiscardResult</span><span class="params">()</span></span> -&gt; <span class="type">Bool</span> &#123; <span class="keyword">return</span> <span class="literal">true</span> &#125;</div><div class="line"></div><div class="line">@discardableResult</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">discardResult</span><span class="params">()</span></span> -&gt; <span class="type">Bool</span> &#123; <span class="keyword">return</span> <span class="literal">true</span> &#125;</div><div class="line"></div><div class="line"><span class="comment">// 此处会有警告⚠。所以没有标明 discardableResult 的话，可以用 let _ = xxx 来消除警告</span></div><div class="line"><span class="keyword">let</span> <span class="number">_</span> = undiscardResult()</div><div class="line"><span class="comment">// 因为有标明 discardableResult ，所以不会有警告⚠</span></div><div class="line">discardResult()</div></pre></td></tr></table></figure>
+<h3 id="mutating"><a href="#mutating" class="headerlink" title="mutating"></a>mutating</h3><p>struct 和 enum 是值类型。默认情况下，无法在实例方法中进行修改。如果要修改的话，那么需要加上 mutating 进行修饰。这点的话，Xcode 一般会进行提醒。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Foo</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name : <span class="type">String</span></div><div class="line">    <span class="keyword">mutating</span> <span class="function"><span class="keyword">func</span> <span class="title">change</span><span class="params">(<span class="number">_</span> name: String)</span></span> &#123;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="associatedtype"><a href="#associatedtype" class="headerlink" title="associatedtype"></a>associatedtype</h3><p>来自官网的描述：</p>
+<blockquote>
+<p>When defining a protocol, it’s sometimes useful to declare one or more associated types as part of the protocol’s definition. An associated type gives a placeholder name to a type that is used as part of the protocol. The actual type to use for that associated type isn’t specified until the protocol is adopted. Associated types are specified with the associatedtype keyword.</p>
+</blockquote>
+<p>当定义一个 protocol 的时候，有时候需要制定一些类型，其实就是泛型，用 associatedtype 可以定一个类型。在没有使用前，可以用 associatedtype 关联一些实际的类型。在使用上，当实现该协议的时候，需要使用 typealias 来指定 协议中 associatedtype 所关联的类型。比如 例子中的 Chinese 协议，使用 associatedtype 关联了一个 Person 的虚拟类型。当 Human 实现 Chinese 这个协议，需要使用 typealias 把 Cantonese 指定为 Person，然后对应的方法也会随着变成具体类型。不过使用 associatedtype 后，当继承协议的时候，Xcode 会有提示，需要使用 typealias 。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Human</span> </span>&#123; &#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Cantonese</span> </span>&#123; &#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">Chinese</span> </span>&#123;</div><div class="line">    associatedtype <span class="type">Person</span></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">canEatAnything</span><span class="params">(<span class="number">_</span> person: Person)</span></span> -&gt; <span class="type">Bool</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Human</span> : <span class="title">Chinese</span> </span>&#123;</div><div class="line">    <span class="keyword">typealias</span> <span class="type">Person</span> = <span class="type">Cantonese</span></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">canEatAnything</span><span class="params">(<span class="number">_</span> person: Cantonese)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Designated-amp-Convenience-amp-Required"><a href="#Designated-amp-Convenience-amp-Required" class="headerlink" title="Designated &amp; Convenience &amp; Required"></a>Designated &amp; Convenience &amp; Required</h3><p>Swift 的构造方法要求比较严格。涉及到的关键字主要是 Designated 、 Convenience 、 Required 。</p>
+<p>Designated 的意思大概是指定的，顾名思义，其修饰的构造方法是首要的，并且每个类都至少有一个 designated 构造方法，父类的可被子类所继承。</p>
+<p>Convenience 的中文含义是便利的。顾名思义，其修饰的构造方法只是便利而已。因此，在优先级上，convenience 修饰的构造方法排第二。而且，在使用上，必须在同一个类内，调用 designated 修饰的构造方法。父类的无法被子类所继承。</p>
+<p>两者的关系可以从官方文档的这个关系图看出。</p>
+<p><img src="/images/swift_keywords/p1.png" alt="p1"></p>
+<p>required 修饰的构造方法则是要求子类必须实现父类的这个构造方法。比如说经常用的自定义 UIView，Xcode 则会提示需要实现对应的 required 方法。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Human</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> name : <span class="type">String</span></div><div class="line">    <span class="keyword">var</span> age : <span class="type">Int</span></div><div class="line">    </div><div class="line">    <span class="keyword">init</span>(<span class="number">_</span> name: <span class="type">String</span>, age: <span class="type">Int</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">        <span class="keyword">self</span>.age = age</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">required</span> <span class="keyword">init</span>(<span class="number">_</span> name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.name = name</div><div class="line">        <span class="keyword">self</span>.age = <span class="number">0</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">convenience</span> <span class="keyword">init</span>(<span class="number">_</span> age: <span class="type">Int</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>(<span class="string">""</span>, age: age)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chinese</span> : <span class="title">Human</span> </span>&#123;</div><div class="line">    <span class="comment">// 父类的 designated 构造方法，子类可以进行重载</span></div><div class="line">    <span class="keyword">override</span> <span class="keyword">init</span>(<span class="number">_</span> name: <span class="type">String</span>, age: <span class="type">Int</span>) &#123;</div><div class="line">        <span class="keyword">super</span>.<span class="keyword">init</span>(name, age: age)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 父类标明的 required 构造方法，子类必须实现</span></div><div class="line">    <span class="keyword">required</span> <span class="keyword">init</span>(<span class="number">_</span> name: <span class="type">String</span>) &#123;</div><div class="line">        <span class="built_in">fatalError</span>(<span class="string">"init has not been implemented"</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 父类标明的 convenience 构造方法，不被子类所继承</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>参考：<a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html" target="_blank" rel="external">官方文档：构造方法</a></p>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>暂时就这些。不定时更新～～。（逃</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Swift/" rel="tag"># Swift</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/swift_access_control/" rel="next" title="Swift —— Access Control">
+                <i class="fa fa-chevron-left"></i> Swift —— Access Control
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="swift_keywords/"
+           data-title="Swift —— 关键字" data-url="http://yoursite.com/swift_keywords/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="六叔" />
+          <p class="site-author-name" itemprop="name">六叔</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/AddIcechan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/chjbking" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#inline-always-nbsp-amp-inline-never"><span class="nav-number">1.</span> <span class="nav-text">@inline(__always)  & @inline(never)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#discardableResult"><span class="nav-number">2.</span> <span class="nav-text">@discardableResult</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mutating"><span class="nav-number">3.</span> <span class="nav-text">mutating</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#associatedtype"><span class="nav-number">4.</span> <span class="nav-text">associatedtype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Designated-amp-Convenience-amp-Required"><span class="nav-number">5.</span> <span class="nav-text">Designated & Convenience & Required</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结语"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">六叔</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"addice"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

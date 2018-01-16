@@ -73,7 +73,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="charles," />
+  <meta name="keywords" content="Swift," />
 
 
 
@@ -89,22 +89,19 @@
 
 
 
-<meta name="description" content="看过一篇关于使用fiddler工具进行抓包，通过iTunes下载旧版本App的文章，但是这是windows平台下的。文章链接。如果是mac平台呢？
-fiddler只有windows版本，这只是一个抓包工具。那么mac下，可以通过Charles进行抓包拦截，然后下载。">
+<meta name="description" content="最近遇到一个问题。一个关于时间的 UI 显示，需要显示上午/下午。一般来说，就是在 DateFormatter 里面进行设置 dateFormat 即可。但是一般都是AM/PM。后来发现 iOS/macOS 比较都可以显示上午/下午的。苹果的开发团队不可能还傻到得自己去算时间吧。于是看 DateFormmatter 的文档，发现了 Locale 这个东西。
+说了这么多废话。总算进主题了。该篇是整理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="利用 Charles 通过 iTunes 下载旧版本的 App">
-<meta property="og:url" content="http://yoursite.com/charles_download_app_old_version/index.html">
+<meta property="og:title" content="DateFormatter">
+<meta property="og:url" content="http://yoursite.com/dateformatter/index.html">
 <meta property="og:site_name" content="ADDICE">
-<meta property="og:description" content="看过一篇关于使用fiddler工具进行抓包，通过iTunes下载旧版本App的文章，但是这是windows平台下的。文章链接。如果是mac平台呢？
-fiddler只有windows版本，这只是一个抓包工具。那么mac下，可以通过Charles进行抓包拦截，然后下载。">
-<meta property="og:image" content="http://yoursite.com/images/charles_download_app_old_version/step4.png">
-<meta property="og:image" content="http://yoursite.com/images/charles_download_app_old_version/step6.png">
-<meta property="og:updated_time" content="2017-07-29T12:06:17.000Z">
+<meta property="og:description" content="最近遇到一个问题。一个关于时间的 UI 显示，需要显示上午/下午。一般来说，就是在 DateFormatter 里面进行设置 dateFormat 即可。但是一般都是AM/PM。后来发现 iOS/macOS 比较都可以显示上午/下午的。苹果的开发团队不可能还傻到得自己去算时间吧。于是看 DateFormmatter 的文档，发现了 Locale 这个东西。
+说了这么多废话。总算进主题了。该篇是整理">
+<meta property="og:updated_time" content="2018-01-16T06:14:23.679Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="利用 Charles 通过 iTunes 下载旧版本的 App">
-<meta name="twitter:description" content="看过一篇关于使用fiddler工具进行抓包，通过iTunes下载旧版本App的文章，但是这是windows平台下的。文章链接。如果是mac平台呢？
-fiddler只有windows版本，这只是一个抓包工具。那么mac下，可以通过Charles进行抓包拦截，然后下载。">
-<meta name="twitter:image" content="http://yoursite.com/images/charles_download_app_old_version/step4.png">
+<meta name="twitter:title" content="DateFormatter">
+<meta name="twitter:description" content="最近遇到一个问题。一个关于时间的 UI 显示，需要显示上午/下午。一般来说，就是在 DateFormatter 里面进行设置 dateFormat 即可。但是一般都是AM/PM。后来发现 iOS/macOS 比较都可以显示上午/下午的。苹果的开发团队不可能还傻到得自己去算时间吧。于是看 DateFormmatter 的文档，发现了 Locale 这个东西。
+说了这么多废话。总算进主题了。该篇是整理">
 
 
 
@@ -132,13 +129,13 @@ fiddler只有windows版本，这只是一个抓包工具。那么mac下，可以
 
 
 
-  <link rel="canonical" href="http://yoursite.com/charles_download_app_old_version/"/>
+  <link rel="canonical" href="http://yoursite.com/dateformatter/"/>
 
 
 
 
 
-  <title> 利用 Charles 通过 iTunes 下载旧版本的 App | ADDICE </title>
+  <title> DateFormatter | ADDICE </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -266,7 +263,7 @@ fiddler只有windows版本，这只是一个抓包工具。那么mac下，可以
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/charles_download_app_old_version/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/dateformatter/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="六叔">
@@ -287,7 +284,7 @@ fiddler只有windows版本，这只是一个抓包工具。那么mac下，可以
             
             
               
-                利用 Charles 通过 iTunes 下载旧版本的 App
+                DateFormatter
               
             
           </h1>
@@ -302,8 +299,8 @@ fiddler只有windows版本，这只是一个抓包工具。那么mac下，可以
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-29T17:34:03+08:00">
-                2017-01-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T10:40:18+08:00">
+                2018-01-12
               </time>
             
 
@@ -325,8 +322,8 @@ fiddler只有windows版本，这只是一个抓包工具。那么mac下，可以
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Others/" itemprop="url" rel="index">
-                    <span itemprop="name">Others</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -343,8 +340,8 @@ fiddler只有windows版本，这只是一个抓包工具。那么mac下，可以
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/charles_download_app_old_version/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="charles_download_app_old_version/" itemprop="commentCount"></span>
+                <a href="/dateformatter/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="dateformatter/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -370,33 +367,109 @@ fiddler只有windows版本，这只是一个抓包工具。那么mac下，可以
       
 
       
-        <p>看过一篇关于使用<code>fiddler</code>工具进行抓包，通过<code>iTunes</code>下载旧版本App的文章，但是这是<code>windows</code>平台下的。<a href="http://bbs.feng.com/read-htm-tid-10125110.html" target="_blank" rel="external">文章链接</a>。如果是<code>mac</code>平台呢？</p>
-<p><code>fiddler</code>只有<code>windows</code>版本，这只是一个抓包工具。那么<code>mac</code>下，可以通过<code>Charles</code>进行抓包拦截，然后下载。</p>
+        <p>最近遇到一个问题。一个关于时间的 UI 显示，需要显示<code>上午/下午</code>。一般来说，就是在 DateFormatter 里面进行设置 dateFormat 即可。但是一般都是<code>AM/PM</code>。后来发现 iOS/macOS 比较都可以显示上午/下午的。苹果的开发团队不可能还傻到得自己去算时间吧。于是看 DateFormmatter 的文档，发现了 Locale 这个东西。</p>
+<p>说了这么多废话。总算进主题了。该篇是整理下 DateFormatter。老司机就不用往下看了。😂。</p>
 <a id="more"></a>
-<p>步骤：</p>
-<ol>
-<li><p>打开<code>Charles</code>，注意：相关配置需要弄好，比如root证书什么的</p>
-</li>
-<li><p>打开<code>iTunes</code>，挑选任意一个app，进行下载，但app开始下载时，可以选择暂停，返回<code>Charles</code>查看</p>
-</li>
-<li><p>在<code>Charles</code>一大堆数据上，可以过滤处<code>itunes</code>。找到类似<code>pX-bug.itunes.apple.com</code>（X为数字）的，<code>Enable SSL Proxying</code>。</p>
-</li>
-<li><p>然后重新第二步操作，你会发现<code>Structure</code>下面，对应的<code>px-buy.itunes.apple.com</code>下面多出了一些内容。<code>WebObjects/MZBuy.woa/wa/buyProduct</code>，右键对其进行添加<code>breakpoints</code>。，点击<code>content</code>，查看其<code>XML</code>内容。注意：此处需要右键 -&gt; <code>Enable SSL Proxying</code></p>
-<p> <img src="/images/charles_download_app_old_version/step4.png" alt="step4"></p>
-</li>
-<li><p>在上述内容中，你需要找到一个<code>softwareVersionExternalIdentifiers</code>的字段，其中数组<code>array</code>所包含的就是该app的版本记录吧。</p>
-</li>
-<li><p>这时候，可以选择对该链接进行保存，事实上主要是为了记住这些版本记录。如下图。</p>
-<p> <img src="/images/charles_download_app_old_version/step6.png" alt="step6"></p>
-</li>
-<li><p>删除<code>iTunes</code>中正在下载的app，重新下载该app。此时，<code>Charles</code>中的<code>breakpoints</code>将被激活，前往<code>Charles</code>修改</p>
-</li>
-<li><p>在<code>Charles</code>中，此时看到所打断点的内容。<code>Edit Request</code>-&gt;<code>XML Text</code>。会看到<code>appExtVrsId</code>字段。其中的内容就是上述<code>5.</code>中看到的<code>softwareVersionExternalIdentifiers</code>的内容。此时需要将其替换成 任何一个你想要的版本，也就是其他的id。一个版本可能会对应多个id，所以具体还是得逐个尝试才能得到相应的版本。一般来说，<code>appExtVrsId</code>中默认的值都是最新版本的id。修改完毕后，<code>Execute</code>。</p>
-</li>
-<li><p>返回<code>iTunes</code>查看当前下载，等候完毕。完毕。如果提示出现下载插图什么的乱七八糟<code>Error</code>，那么就重新下载，试多几次就好了。</p>
-</li>
-</ol>
-<p>其实，说到底就是利用<code>Charles</code>，进行拦截修改，进而达成目标。</p>
+<h4 id="DateFormatter-使用"><a href="#DateFormatter-使用" class="headerlink" title="DateFormatter 使用"></a>DateFormatter 使用</h4><p>DateFormatter 的使用比较简单。一般的话，很常见的用法就是用 DateFormatter 将 Date 和 String 互换。看🌰。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> date = <span class="type">Date</span>()</div><div class="line"><span class="keyword">let</span> dateFormatter = <span class="type">DateFormatter</span>()</div><div class="line">dateFormatter.dateFormat = <span class="string">"YYYY年MM月dd日 HH:mm:ss"</span></div><div class="line">dateFormatter.string(from: date)</div></pre></td></tr></table></figure>
+<p><code>dateFormat</code>的格式，其实是遵守<code>Unicode Technical Standard</code>。</p>
+<blockquote>
+<p>To specify a custom fixed format for a date formatter, you use setDateFormat:. The format string uses the format patterns from the Unicode Technical Standard #35. The version of the standard varies with release of the operating system:</p>
+<p>OS X v10.9 and iOS 7 use version <a href="http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns" target="_blank" rel="external">tr35-31</a>.</p>
+<p>OS X v10.8 and iOS 6 use version <a href="http://www.unicode.org/reports/tr35/tr35-25.html#Date_Format_Patterns" target="_blank" rel="external">tr35-25</a>.</p>
+</blockquote>
+<p>不同系统版本遵循的格式范围不同。不过现在普遍都是 iOS 7 以上适配了。</p>
+<p>在 Unicode Technical Standard 中，<a href="http://www.unicode.org/reports/tr35/tr35-25.html#Date_Format_Patterns" target="_blank" rel="external">Date Format Patterns</a>支持的格式挺多的。这里只列一些常用的。</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>年份</td>
+<td>y</td>
+<td>正常的年份显示，可以用多种组合。</td>
+</tr>
+<tr>
+<td></td>
+<td>U</td>
+<td>表示农历年份，干支纪法。比如 甲子、丁酉。但是需要配合<code>Calendar</code>和<code>Locale</code>使用</td>
+</tr>
+<tr>
+<td>月份</td>
+<td>M</td>
+<td>表示 monthSymbols。 <code>M/MM</code>表示月份的数字，如 1/01；<code>MMM</code>表示简写月份，对应着<code>shortMonthSymbols</code>，如 Jun；<code>MMMM</code>表示标准月份,对应着<code>monthSymbols</code>，如 June；<code>MMMMM</code>表示最简的月份表示，对应着<code>veryShortMonthSymbols</code>，如一月份是 J</td>
+</tr>
+<tr>
+<td></td>
+<td>L</td>
+<td>表示 standaloneMonthSymbols。类同 M 的表示方法。</td>
+</tr>
+<tr>
+<td>天数</td>
+<td>d</td>
+<td>表示一个月中的第几天，<code>d/dd</code>表示 1/01 的区别 </td>
+</tr>
+<tr>
+<td></td>
+<td>D</td>
+<td>表示一年中的第几天，可<code>D/DD/DDD</code></td>
+</tr>
+<tr>
+<td>周</td>
+<td>w</td>
+<td>表示一年中的第几周，可<code>w/ww</code></td>
+</tr>
+<tr>
+<td></td>
+<td>W</td>
+<td>表示一个月中的第几周，可<code>W</code></td>
+</tr>
+<tr>
+<td></td>
+<td>E</td>
+<td>表示周几这样。比如星期日。<code>E\EE\EEE</code>-&gt;Sun, <code>EEEE</code>-&gt;Sunday, <code>EEEEE</code>-&gt;S。还可以搭配 Calendar 和 Locale，显示中文的 周日/星期日/日</td>
+</tr>
+<tr>
+<td></td>
+<td>c</td>
+<td>同 E。但是主要是是对应<code>standaloneWeekday</code>。搭配组合规则同 E </td>
+</tr>
+<tr>
+<td>时钟</td>
+<td>h</td>
+<td>12小时制。可<code>h/hh</code></td>
+</tr>
+<tr>
+<td></td>
+<td>H</td>
+<td>24小时制。可<code>H/HH</code></td>
+</tr>
+<tr>
+<td>分钟</td>
+<td>m</td>
+<td>分数。可<code>m/mm</code></td>
+</tr>
+<tr>
+<td>秒钟</td>
+<td>s</td>
+<td>秒数。可<code>s/ss</code></td>
+</tr>
+</tbody>
+</table>
+<p>常用的一些组合，大概是以上这些。按照<code>Unicode Date Format</code>的话，其实还有季度、毫秒级的一些表示。</p>
+<p>比如今日是 2018年1月16日。那么通过 DateFormatter 表示农历日期，可以是</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> date = <span class="type">Date</span>()</div><div class="line"><span class="keyword">let</span> dateFormatter = <span class="type">DateFormatter</span>()</div><div class="line">dateFormatter.dateFormat = <span class="string">"YYYY年MM月dd日 HH:mm:ss"</span></div><div class="line">dateFormatter.string(from: date)</div><div class="line">dateFormatter.locale = <span class="type">Locale</span>(identifier: <span class="string">"zh_CN"</span>)</div><div class="line">dateFormatter.calendar = <span class="type">Calendar</span>(identifier: .chinese)</div><div class="line">dateFormatter.dateStyle = .medium</div><div class="line">dateFormatter.dateFormat = <span class="string">"U年MMMd EEE a"</span> </div><div class="line">dateFormatter.string(from: date) <span class="comment">// 丁酉年冬月三十 周二 下午</span></div></pre></td></tr></table></figure>
+<p>其中，可以针对 DateFormatter 的 monthSymbols 等一些属性，设置我们特有的一些表示习惯。比如，一月我们希望显示是正月，而冬月和腊月则显示十一月、十二月。那么可以通过这样进行设置。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> date = <span class="type">Date</span>()</div><div class="line"><span class="keyword">let</span> dateFormatter = <span class="type">DateFormatter</span>()</div><div class="line">dateFormatter.dateFormat = <span class="string">"YYYY年MM月dd日 HH:mm:ss"</span></div><div class="line">dateFormatter.string(from: date)</div><div class="line">dateFormatter.locale = <span class="type">Locale</span>(identifier: <span class="string">"zh_CN"</span>)</div><div class="line">dateFormatter.calendar = <span class="type">Calendar</span>(identifier: .chinese)</div><div class="line">dateFormatter.dateStyle = .medium</div><div class="line">dateFormatter.shortMonthSymbols = [<span class="string">"正月"</span>, <span class="string">"二月"</span>, <span class="string">"三月"</span>, <span class="string">"四月"</span>, <span class="string">"五月"</span>, <span class="string">"六月"</span>, <span class="string">"七月"</span>, <span class="string">"八月"</span>, <span class="string">"九月"</span>, <span class="string">"十月"</span>, <span class="string">"十一月"</span>, <span class="string">"十二月"</span>]</div><div class="line">dateFormatter.dateFormat = <span class="string">"U年MMMd EEE a"</span></div><div class="line">dateFormatter.string(from: date) <span class="comment">// 丁酉年十一月三十 周二 下午</span></div></pre></td></tr></table></figure>
+<p>大概就这些了吧。</p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/DatesAndTimes/DatesAndTimes.html#//apple_ref/doc/uid/10000039i" target="_blank" rel="external">Date and Time Programming Guide</a></p>
+<p><a href="http://www.unicode.org/reports/tr35/tr35-25.html#Calendar_Elements" target="_blank" rel="external">Unicode Technical Standard</a></p>
+<p><a href="http://www.unicode.org/reports/tr35/tr35-25.html#Date_Format_Patterns" target="_blank" rel="external">Date Format Patterns</a></p>
 
       
     </div>
@@ -426,7 +499,7 @@ fiddler只有windows版本，这只是一个抓包工具。那么mac下，可以
       
         <div class="post-tags">
           
-            <a href="/tags/charles/" rel="tag"># charles</a>
+            <a href="/tags/Swift/" rel="tag"># Swift</a>
           
         </div>
       
@@ -439,15 +512,15 @@ fiddler只有windows版本，这只是一个抓包工具。那么mac下，可以
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/swift_keywords/" rel="next" title="Swift —— 关键字">
+                <i class="fa fa-chevron-left"></i> Swift —— 关键字
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/multiple_git_account_ssh/" rel="prev" title="GitHub 和 Gitlab 共存">
-                GitHub 和 Gitlab 共存 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -473,8 +546,8 @@ fiddler只有windows版本，这只是一个抓包工具。那么mac下，可以
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="charles_download_app_old_version/"
-           data-title="利用 Charles 通过 iTunes 下载旧版本的 App" data-url="http://yoursite.com/charles_download_app_old_version/">
+      <div class="ds-thread" data-thread-key="dateformatter/"
+           data-title="DateFormatter" data-url="http://yoursite.com/dateformatter/">
       </div>
     
   </div>
@@ -498,8 +571,17 @@ fiddler只有windows版本，这只是一个抓包工具。那么mac下，可以
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -581,6 +663,22 @@ fiddler只有windows版本，这只是一个抓包工具。那么mac下，可以
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#DateFormatter-使用"><span class="nav-number">1.</span> <span class="nav-text">DateFormatter 使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

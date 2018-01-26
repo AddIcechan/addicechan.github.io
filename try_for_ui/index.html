@@ -89,19 +89,16 @@
 
 
 
-<meta name="description" content="最近遇到一个问题。一个关于时间的 UI 显示，需要显示上午/下午。一般来说，就是在 DateFormatter 里面进行设置 dateFormat 即可。但是一般都是AM/PM。后来发现 iOS/macOS 比较都可以显示上午/下午的。苹果的开发团队不可能还傻到得自己去算时间吧。于是看 DateFormmatter 的文档，发现了 Locale 这个东西。
-说了这么多废话。总算进主题了。该篇是整理">
+<meta name="description" content="一个 UI 小尝试。关于 Swift 的命名空间，以及封装的 SnapKit。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DateFormatter">
-<meta property="og:url" content="http://yoursite.com/dateformatter/index.html">
+<meta property="og:title" content="一个 UI 小尝试～">
+<meta property="og:url" content="http://yoursite.com/try_for_ui/index.html">
 <meta property="og:site_name" content="ADDICE">
-<meta property="og:description" content="最近遇到一个问题。一个关于时间的 UI 显示，需要显示上午/下午。一般来说，就是在 DateFormatter 里面进行设置 dateFormat 即可。但是一般都是AM/PM。后来发现 iOS/macOS 比较都可以显示上午/下午的。苹果的开发团队不可能还傻到得自己去算时间吧。于是看 DateFormmatter 的文档，发现了 Locale 这个东西。
-说了这么多废话。总算进主题了。该篇是整理">
-<meta property="og:updated_time" content="2018-01-16T06:16:08.417Z">
+<meta property="og:description" content="一个 UI 小尝试。关于 Swift 的命名空间，以及封装的 SnapKit。">
+<meta property="og:updated_time" content="2018-01-26T07:14:32.127Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DateFormatter">
-<meta name="twitter:description" content="最近遇到一个问题。一个关于时间的 UI 显示，需要显示上午/下午。一般来说，就是在 DateFormatter 里面进行设置 dateFormat 即可。但是一般都是AM/PM。后来发现 iOS/macOS 比较都可以显示上午/下午的。苹果的开发团队不可能还傻到得自己去算时间吧。于是看 DateFormmatter 的文档，发现了 Locale 这个东西。
-说了这么多废话。总算进主题了。该篇是整理">
+<meta name="twitter:title" content="一个 UI 小尝试～">
+<meta name="twitter:description" content="一个 UI 小尝试。关于 Swift 的命名空间，以及封装的 SnapKit。">
 
 
 
@@ -129,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/dateformatter/"/>
+  <link rel="canonical" href="http://yoursite.com/try_for_ui/"/>
 
 
 
 
 
-  <title> DateFormatter | ADDICE </title>
+  <title> 一个 UI 小尝试～ | ADDICE </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -263,7 +260,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/dateformatter/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/try_for_ui/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="六叔">
@@ -284,7 +281,7 @@
             
             
               
-                DateFormatter
+                一个 UI 小尝试～
               
             
           </h1>
@@ -299,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T10:40:18+08:00">
-                2018-01-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-26T15:14:32+08:00">
+                2018-01-26
               </time>
             
 
@@ -340,8 +337,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/dateformatter/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="dateformatter/" itemprop="commentCount"></span>
+                <a href="/try_for_ui/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="try_for_ui/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -367,109 +364,22 @@
       
 
       
-        <p>最近遇到一个问题。一个关于时间的 UI 显示，需要显示<code>上午/下午</code>。一般来说，就是在 DateFormatter 里面进行设置 dateFormat 即可。但是一般都是<code>AM/PM</code>。后来发现 iOS/macOS 比较都可以显示上午/下午的。苹果的开发团队不可能还傻到得自己去算时间吧。于是看 DateFormmatter 的文档，发现了 Locale 这个东西。</p>
-<p>说了这么多废话。总算进主题了。该篇是整理下 DateFormatter。老司机就不用往下看了。😂。</p>
+        <p>一个 UI 小尝试。关于 Swift 的命名空间，以及封装的 SnapKit。</p>
 <a id="more"></a>
-<h4 id="DateFormatter-使用"><a href="#DateFormatter-使用" class="headerlink" title="DateFormatter 使用"></a>DateFormatter 使用</h4><p>DateFormatter 的使用比较简单。一般的话，很常见的用法就是用 DateFormatter 将 Date 和 String 互换。看🌰。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> date = <span class="type">Date</span>()</div><div class="line"><span class="keyword">let</span> dateFormatter = <span class="type">DateFormatter</span>()</div><div class="line">dateFormatter.dateFormat = <span class="string">"YYYY年MM月dd日 HH:mm:ss"</span></div><div class="line">dateFormatter.string(from: date)</div></pre></td></tr></table></figure>
-<p><code>dateFormat</code>的格式，其实是遵守<code>Unicode Technical Standard</code>。</p>
-<blockquote>
-<p>To specify a custom fixed format for a date formatter, you use setDateFormat:. The format string uses the format patterns from the Unicode Technical Standard #35. The version of the standard varies with release of the operating system:</p>
-<p>OS X v10.9 and iOS 7 use version <a href="http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns" target="_blank" rel="external">tr35-31</a>.</p>
-<p>OS X v10.8 and iOS 6 use version <a href="http://www.unicode.org/reports/tr35/tr35-25.html#Date_Format_Patterns" target="_blank" rel="external">tr35-25</a>.</p>
-</blockquote>
-<p>不同系统版本遵循的格式范围不同。不过现在普遍都是 iOS 7 以上适配了。</p>
-<p>在 Unicode Technical Standard 中，<a href="http://www.unicode.org/reports/tr35/tr35-25.html#Date_Format_Patterns" target="_blank" rel="external">Date Format Patterns</a>支持的格式挺多的。这里只列一些常用的。</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>symbol</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>年份</td>
-<td>y</td>
-<td>正常的年份显示，可以用多种组合。</td>
-</tr>
-<tr>
-<td></td>
-<td>U</td>
-<td>表示农历年份，干支纪法。比如 甲子、丁酉。但是需要配合<code>Calendar</code>和<code>Locale</code>使用</td>
-</tr>
-<tr>
-<td>月份</td>
-<td>M</td>
-<td>表示 monthSymbols。 <code>M/MM</code>表示月份的数字，如 1/01；<code>MMM</code>表示简写月份，对应着<code>shortMonthSymbols</code>，如 Jun；<code>MMMM</code>表示标准月份,对应着<code>monthSymbols</code>，如 June；<code>MMMMM</code>表示最简的月份表示，对应着<code>veryShortMonthSymbols</code>，如一月份是 J</td>
-</tr>
-<tr>
-<td></td>
-<td>L</td>
-<td>表示 standaloneMonthSymbols。类同 M 的表示方法。</td>
-</tr>
-<tr>
-<td>天数</td>
-<td>d</td>
-<td>表示一个月中的第几天，<code>d/dd</code>表示 1/01 的区别 </td>
-</tr>
-<tr>
-<td></td>
-<td>D</td>
-<td>表示一年中的第几天，可<code>D/DD/DDD</code></td>
-</tr>
-<tr>
-<td>周</td>
-<td>w</td>
-<td>表示一年中的第几周，可<code>w/ww</code></td>
-</tr>
-<tr>
-<td></td>
-<td>W</td>
-<td>表示一个月中的第几周，可<code>W</code></td>
-</tr>
-<tr>
-<td></td>
-<td>E</td>
-<td>表示周几这样。比如星期日。<code>E\EE\EEE</code>-&gt;Sun, <code>EEEE</code>-&gt;Sunday, <code>EEEEE</code>-&gt;S。还可以搭配 Calendar 和 Locale，显示中文的 周日/星期日/日</td>
-</tr>
-<tr>
-<td></td>
-<td>c</td>
-<td>同 E。但是主要是是对应<code>standaloneWeekday</code>。搭配组合规则同 E </td>
-</tr>
-<tr>
-<td>时钟</td>
-<td>h</td>
-<td>12小时制。可<code>h/hh</code></td>
-</tr>
-<tr>
-<td></td>
-<td>H</td>
-<td>24小时制。可<code>H/HH</code></td>
-</tr>
-<tr>
-<td>分钟</td>
-<td>m</td>
-<td>分数。可<code>m/mm</code></td>
-</tr>
-<tr>
-<td>秒钟</td>
-<td>s</td>
-<td>秒数。可<code>s/ss</code></td>
-</tr>
-</tbody>
-</table>
-<p>常用的一些组合，大概是以上这些。按照<code>Unicode Date Format</code>的话，其实还有季度、毫秒级的一些表示。</p>
-<p>比如今日是 2018年1月16日。那么通过 DateFormatter 表示农历日期，可以是</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> date = <span class="type">Date</span>()</div><div class="line"><span class="keyword">let</span> dateFormatter = <span class="type">DateFormatter</span>()</div><div class="line">dateFormatter.dateFormat = <span class="string">"YYYY年MM月dd日 HH:mm:ss"</span></div><div class="line">dateFormatter.string(from: date)</div><div class="line">dateFormatter.locale = <span class="type">Locale</span>(identifier: <span class="string">"zh_CN"</span>)</div><div class="line">dateFormatter.calendar = <span class="type">Calendar</span>(identifier: .chinese)</div><div class="line">dateFormatter.dateStyle = .medium</div><div class="line">dateFormatter.dateFormat = <span class="string">"U年MMMd EEE a"</span> </div><div class="line">dateFormatter.string(from: date) <span class="comment">// 丁酉年冬月三十 周二 下午</span></div></pre></td></tr></table></figure>
-<p>其中，可以针对 DateFormatter 的 monthSymbols 等一些属性，设置我们特有的一些表示习惯。比如，一月我们希望显示是正月，而冬月和腊月则显示十一月、十二月。那么可以通过这样进行设置。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> date = <span class="type">Date</span>()</div><div class="line"><span class="keyword">let</span> dateFormatter = <span class="type">DateFormatter</span>()</div><div class="line">dateFormatter.dateFormat = <span class="string">"YYYY年MM月dd日 HH:mm:ss"</span></div><div class="line">dateFormatter.string(from: date)</div><div class="line">dateFormatter.locale = <span class="type">Locale</span>(identifier: <span class="string">"zh_CN"</span>)</div><div class="line">dateFormatter.calendar = <span class="type">Calendar</span>(identifier: .chinese)</div><div class="line">dateFormatter.dateStyle = .medium</div><div class="line">dateFormatter.shortMonthSymbols = [<span class="string">"正月"</span>, <span class="string">"二月"</span>, <span class="string">"三月"</span>, <span class="string">"四月"</span>, <span class="string">"五月"</span>, <span class="string">"六月"</span>, <span class="string">"七月"</span>, <span class="string">"八月"</span>, <span class="string">"九月"</span>, <span class="string">"十月"</span>, <span class="string">"十一月"</span>, <span class="string">"十二月"</span>]</div><div class="line">dateFormatter.dateFormat = <span class="string">"U年MMMd EEE a"</span></div><div class="line">dateFormatter.string(from: date) <span class="comment">// 丁酉年十一月三十 周二 下午</span></div></pre></td></tr></table></figure>
-<p>大概就这些了吧。</p>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/DatesAndTimes/DatesAndTimes.html#//apple_ref/doc/uid/10000039i" target="_blank" rel="external">Date and Time Programming Guide</a></p>
-<p><a href="http://www.unicode.org/reports/tr35/tr35-25.html#Calendar_Elements" target="_blank" rel="external">Unicode Technical Standard</a></p>
-<p><a href="http://www.unicode.org/reports/tr35/tr35-25.html#Date_Format_Patterns" target="_blank" rel="external">Date Format Patterns</a></p>
+<h4 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h4><p>Swift 有自己的命名空间。不像 Objective-C 一样，需要一个很繁琐的前缀。但是如果是系统的 API 呢，万一重名了呢？那么我们可以进行一个独特的命名空间。</p>
+<p>看了<a href="https://github.com/onevcat/Kingfisher/blob/master/Sources/Kingfisher.swift" target="_blank" rel="external">Kingfisher</a> 和 <a href="https://github.com/ReactiveX/RxSwift/blob/master/RxSwift/Reactive.swift" target="_blank" rel="external">RxSwift</a> 的源码，自己的命名空间并不难。无非就是定义一个结构体或类，并且定义一个命名的协议，之后进行扩展。还是上代码吧。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Reader</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">    <span class="keyword">let</span> base : <span class="type">T</span></div><div class="line">    <span class="keyword">init</span>(<span class="number">_</span> base: <span class="type">T</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.base = base</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">protocol</span> <span class="title">ReaderNameCompatible</span> </span>&#123;</div><div class="line">    associatedtype <span class="type">ReaderCompatibleType</span></div><div class="line">    <span class="keyword">var</span> rd : <span class="type">Reader</span>&lt;<span class="type">ReaderCompatibleType</span>&gt; &#123; <span class="keyword">get</span> &#125;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">var</span> <span class="type">RD</span> : <span class="type">Reader</span>&lt;<span class="type">ReaderCompatibleType</span>&gt;.<span class="type">Type</span> &#123; <span class="keyword">get</span> &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">ReaderNameCompatible</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> rd : <span class="type">Reader</span>&lt;<span class="type">Self</span>&gt; &#123;</div><div class="line">        <span class="keyword">return</span> <span class="type">Reader</span>(<span class="keyword">self</span>)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">var</span> <span class="type">RD</span> : <span class="type">Reader</span>&lt;<span class="type">Self</span>&gt;.<span class="type">Type</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="type">Reader</span>&lt;<span class="type">Self</span>&gt;.<span class="keyword">self</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>为了区分 static 调用，所以关于 static 的实例，采用了大写的 RD。<br>这里还出了一个小乌龙。原先，自己定义的 Struct 是这样的。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Reader</span>&lt;<span class="title">Base</span>&gt; </span>&#123;</div><div class="line">    <span class="keyword">let</span> base : <span class="type">Base</span></div><div class="line">    <span class="keyword">init</span>(<span class="number">_</span> base: <span class="type">Base</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.base = base</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>泛型用了 Base 表示。但是当用到 RxSwift 的时候，那些我自己实现协议的类，比如 UIColor 等。经常就会莫名其妙报错。而且很玄幻。</p>
+<h4 id="UI-小尝试"><a href="#UI-小尝试" class="headerlink" title="UI 小尝试"></a>UI 小尝试</h4><p>项目中使用了 Snapkit。但是每次都得很繁琐的写上几行代码。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> btn = <span class="type">UIButton</span>()</div><div class="line">btn.backgroundColor = .yellow</div><div class="line">view.addSubview(btn)</div><div class="line">btn.snp.makeConstraints &#123;</div><div class="line">    $<span class="number">0</span>.edges.equalToSuperview()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>于是就在想，能不能一行搞定呢。于是就有了一个小扩展。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"><span class="keyword">import</span> SnapKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UIView</span> : <span class="title">ReaderNameCompatible</span> </span>&#123; &#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">Reader</span> <span class="title">where</span> <span class="title">T</span>: <span class="title">UIView</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">typealias</span> <span class="type">View</span> = <span class="type">T</span></div><div class="line">    </div><div class="line">    @discardableResult</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">(<span class="keyword">in</span> superView: UIView)</span></span> -&gt; <span class="type">Reader</span>&lt;<span class="type">View</span>&gt; &#123;</div><div class="line">        superView.addSubview(base)</div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    @discardableResult</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">with</span><span class="params">(<span class="number">_</span> handler: <span class="params">(<span class="params">(View)</span></span></span></span> -&gt; <span class="type">Void</span>)) -&gt; <span class="type">Reader</span>&lt;<span class="type">View</span>&gt; &#123;</div><div class="line">        </div><div class="line">        handler(base)</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    @discardableResult</div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">constaint</span><span class="params">(<span class="number">_</span> handler: <span class="params">(<span class="params">(ConstraintMaker)</span></span></span></span> -&gt; <span class="type">Void</span>)) -&gt; <span class="type">View</span> &#123;</div><div class="line">        </div><div class="line">        base.snp.makeConstraints &#123; (make) <span class="keyword">in</span></div><div class="line">            handler(make)</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> base</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用这个扩展后，当在写 UI 布局的时候，就可以是下面这样了。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> btn = <span class="type">UIButton</span>().rd.add(<span class="keyword">in</span>: view).with &#123;</div><div class="line">                        $<span class="number">0</span>.backgroundColor = .yellow</div><div class="line">                    &#125;.constaint &#123;</div><div class="line">                        $<span class="number">0</span>.edges.equalToSuperview()</div><div class="line">                    &#125;</div></pre></td></tr></table></figure>
+<p>形式上，看上去也挺 OK 的。</p>
+<p>就这样吧。一个小尝试。一篇没有水分的 Blog。（逃</p>
 
       
     </div>
@@ -512,8 +422,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/swift_keywords/" rel="next" title="Swift —— 关键字">
-                <i class="fa fa-chevron-left"></i> Swift —— 关键字
+              <a href="/dateformatter/" rel="next" title="DateFormatter">
+                <i class="fa fa-chevron-left"></i> DateFormatter
               </a>
             
           </div>
@@ -521,10 +431,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/try_for_ui/" rel="prev" title="一个 UI 小尝试～">
-                一个 UI 小尝试～ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -550,8 +456,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="dateformatter/"
-           data-title="DateFormatter" data-url="http://yoursite.com/dateformatter/">
+      <div class="ds-thread" data-thread-key="try_for_ui/"
+           data-title="一个 UI 小尝试～" data-url="http://yoursite.com/try_for_ui/">
       </div>
     
   </div>
@@ -677,7 +583,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#DateFormatter-使用"><span class="nav-number">1.</span> <span class="nav-text">DateFormatter 使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#命名空间"><span class="nav-number">1.</span> <span class="nav-text">命名空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UI-小尝试"><span class="nav-number">2.</span> <span class="nav-text">UI 小尝试</span></a></li></ol></div>
             
 
           </div>

@@ -73,7 +73,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Swift,iOS," />
+  <meta name="keywords" content="Objective-C," />
 
 
 
@@ -89,27 +89,19 @@
 
 
 
-<meta name="description" content="iOS 11 的第二篇～～～
-当用户在更改手机设置里的字体大小时，App 里面的字体也跟着进行大小变化。这大概就是Dynamic Type吧。UI上的显示，用户的体验，这些都更加友好吧。">
+<meta name="description" content="在看文档的时候，发现 NSThread 的一个方法。
+12@property (readonly) BOOL isMainThread API_AVAILABLE(macos(10.5), ios(2.0), watchos(2.0), tvos(9.0));@property (class, readonly) BOOL isMainThread API_AVAILABLE(macos(10.5">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS 11 的一些玩意儿：Dynamic Type">
-<meta property="og:url" content="http://yoursite.com/dynamic_type/index.html">
+<meta property="og:title" content="class property">
+<meta property="og:url" content="http://yoursite.com/class_property/index.html">
 <meta property="og:site_name" content="ADDICE">
-<meta property="og:description" content="iOS 11 的第二篇～～～
-当用户在更改手机设置里的字体大小时，App 里面的字体也跟着进行大小变化。这大概就是Dynamic Type吧。UI上的显示，用户的体验，这些都更加友好吧。">
-<meta property="og:image" content="http://yoursite.com/images/dynamic_type/p1.png">
-<meta property="og:image" content="http://yoursite.com/images/dynamic_type/p2.png">
-<meta property="og:image" content="http://yoursite.com/images/dynamic_type/p3.png">
-<meta property="og:image" content="http://yoursite.com/images/dynamic_type/p4.png">
-<meta property="og:image" content="http://yoursite.com/images/dynamic_type/p5.png">
-<meta property="og:image" content="http://yoursite.com/images/dynamic_type/p6.png">
-<meta property="og:image" content="http://yoursite.com/images/dynamic_type/p7.jpg">
-<meta property="og:updated_time" content="2017-09-15T01:45:51.000Z">
+<meta property="og:description" content="在看文档的时候，发现 NSThread 的一个方法。
+12@property (readonly) BOOL isMainThread API_AVAILABLE(macos(10.5), ios(2.0), watchos(2.0), tvos(9.0));@property (class, readonly) BOOL isMainThread API_AVAILABLE(macos(10.5">
+<meta property="og:updated_time" content="2018-04-14T08:40:38.015Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS 11 的一些玩意儿：Dynamic Type">
-<meta name="twitter:description" content="iOS 11 的第二篇～～～
-当用户在更改手机设置里的字体大小时，App 里面的字体也跟着进行大小变化。这大概就是Dynamic Type吧。UI上的显示，用户的体验，这些都更加友好吧。">
-<meta name="twitter:image" content="http://yoursite.com/images/dynamic_type/p1.png">
+<meta name="twitter:title" content="class property">
+<meta name="twitter:description" content="在看文档的时候，发现 NSThread 的一个方法。
+12@property (readonly) BOOL isMainThread API_AVAILABLE(macos(10.5), ios(2.0), watchos(2.0), tvos(9.0));@property (class, readonly) BOOL isMainThread API_AVAILABLE(macos(10.5">
 
 
 
@@ -137,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/dynamic_type/"/>
+  <link rel="canonical" href="http://yoursite.com/class_property/"/>
 
 
 
 
 
-  <title> iOS 11 的一些玩意儿：Dynamic Type | ADDICE </title>
+  <title> class property | ADDICE </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -271,7 +263,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/dynamic_type/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/class_property/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="六叔">
@@ -292,7 +284,7 @@
             
             
               
-                iOS 11 的一些玩意儿：Dynamic Type
+                class property
               
             
           </h1>
@@ -307,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-29T23:21:06+08:00">
-                2017-08-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-14T15:52:25+08:00">
+                2018-04-14
               </time>
             
 
@@ -348,8 +340,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/dynamic_type/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="dynamic_type/" itemprop="commentCount"></span>
+                <a href="/class_property/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="class_property/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -375,49 +367,17 @@
       
 
       
-        <p>iOS 11 的第二篇～～～</p>
-<p>当用户在更改手机设置里的字体大小时，App 里面的字体也跟着进行大小变化。这大概就是<code>Dynamic Type</code>吧。UI上的显示，用户的体验，这些都更加友好吧。</p>
+        <p>在看文档的时候，发现 NSThread 的一个方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@property (readonly) BOOL isMainThread API_AVAILABLE(macos(10.5), ios(2.0), watchos(2.0), tvos(9.0));</div><div class="line">@property (class, readonly) BOOL isMainThread API_AVAILABLE(macos(10.5), ios(2.0), watchos(2.0), tvos(9.0)); // reports whether current thread is main</div></pre></td></tr></table></figure>
 <a id="more"></a>
-<p>iOS 11 更新的<code>Dynamic Type</code>，主要是<code>UIFontMetrics</code>这个玩意儿。比方说<code>UILabel</code>，在使用的时候，需要设置<code>adjustsFontForContentSizeCategory = true</code>，这样能确保 UI 在用户在<code>设置-显示</code>里面更改字体大小的时候，App 里的 UI 字体大小也会随着变化。其实，在 iOS 10 的时候，这个属性就己经放出来了。模拟器里面是没有这个选项的话，需要到设置里面， General - Accessibility - Larger Text ，这里进行一个更改字体大小。</p>
-<p><code>Dynamic Type</code>对字体有一定的要求。以往我们都是使用——</p>
-<blockquote>
-<p>func systemFont(ofSize fontSize: CGFloat) -&gt; UIFont</p>
-</blockquote>
-<p>进行一个字体设置，或者是使用自定义字体——</p>
-<blockquote>
-<p>init?(name fontName: String, size fontSize: CGFloat)</p>
-</blockquote>
-<p>但是，如果要使用<code>adjustsFontForContentSizeCategory</code>，那么以上这两个熟悉的方法就不能使用了。对于这个， 爸爸对字体进行了规定。有点类似多级标题，正文啊那些。上下 WWDC keynote 的那张图。清楚的表明了对应的字体大小。</p>
-<p><img src="/images/dynamic_type/p1.png" alt="p1"></p>
-<p>使用<code>Storyboard</code>或者<code>xib</code>进行布局的时候，都比较简单。只需要在对应位置更改就行。把<code>Font</code>给成<code>body</code>，<code>title</code>等这些对应的字体，再者就是把<code>automatically adjusts font</code>给钩上。</p>
-<p><img src="/images/dynamic_type/p2.png" alt="p2"></p>
-<p>至于代码实现呢，在 iOS 10 ，是这样的。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">label.font = <span class="type">UIFont</span>.preferredFont(forTextStyle: .body)</div><div class="line">label.adjustsFontForContentSizeCategory = <span class="literal">true</span></div></pre></td></tr></table></figure>
-<p>以上这两个实现都是 iOS 10 就己经支持的了。但是，有个弊端，就是无法对自定义字体进行支持。于是，iOS 11 带来更强大的<code>UIFontMetrics</code>。</p>
-<p><code>UIFontMetrics</code>的使用也比较简单。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> customFont = <span class="type">UIFont</span>.systemFont(ofSize: <span class="number">20</span>)</div><div class="line">label.font = <span class="type">UIFontMetrics</span>.<span class="keyword">default</span>.scaledFont(<span class="keyword">for</span>: customFont)</div><div class="line">label.adjustsFontForContentSizeCategory = <span class="literal">true</span></div></pre></td></tr></table></figure>
-<p>当然，<code>UIFontMetrics</code>的使用还不止这些。包括可以限制最大字号等。</p>
-<p>另外，网页也可以使用，但是只限制于  设备。在<code>CSS</code>中的<code>font</code>，选择<code>-apple-system-title1</code>，<code>-apple-system-body</code>等。不过如果要在非  设备上使用的话，你可以需要备用字体什么鬼的吧。上个🌰。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">style</span>=<span class="string">"font: -apple-system-title1"</span>&gt;</span>label use apple system title1<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span> label no use apple system font<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>除了字体方面的变化，<code>WWDC</code>还提到了一些随着字体变化，UI 的变化，需要更改。比如 label 显示应该进行换行，而不是一行，然后后续…表示。这样的极为不美观的。另外，必要时还需要更改一些 UI 的 位置、约束等。<code>UITableView</code>则建议使用自动行高。</p>
-<p>对此， 提供了相应的方法判断。不过这方法<code>iOS 7</code>就支持了～</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> <span class="type">UIApplication</span>.shared.preferredContentSizeCategory &gt; .accessibilityExtraExtraLarge &#123;</div><div class="line">    <span class="comment">// 更改一些对应的UI。。吧啦吧啦</span></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="comment">// 更改一些对应的UI。。吧啦吧啦</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>WWDC 也提到了图片可以使用<code>Dynamic Type</code>，用于<code>UIImageView</code>上。只需要把图片用<code>PDF</code>格式放进<code>assets</code>里面。另外，将图片格式致于<code>1x</code>,或者是右侧的<code>scale</code>从<code>individual scales</code>改成<code>single scales</code>。选择<code>Preserve Vector Data</code></p>
-<p>看图～～</p>
-<p><img src="/images/dynamic_type/p3.png" alt="p3"></p>
-<p>类型<code>UILabel</code>，<code>UIImageView</code>也需要设置下。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">imageView.adjustsImageSizeForAccessibilityContentSizeCategory = <span class="literal">true</span></div></pre></td></tr></table></figure>
-<p>IB 党的话，则是</p>
-<p><img src="/images/dynamic_type/p4.png" alt="p4"></p>
-<p>以往<code>tabBar</code>都是么有变化的。使用<code>Dynamic Type</code>后，长按<code>tabBarItem</code>会出现一个弹窗。如图。</p>
-<p><img src="/images/dynamic_type/p5.png" alt="p5"></p>
-<p>可以通过以下代码设置</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">guard</span> <span class="keyword">let</span> firstTabBarItem = tabBar.items?.first <span class="keyword">else</span> &#123; <span class="keyword">return</span> &#125;</div><div class="line">firstTabBarItem.largeContentSizeImage = 图片</div></pre></td></tr></table></figure>
-<p>或者是</p>
-<p><img src="/images/dynamic_type/p6.png" alt="p6"></p>
-<p><code>BarItem</code>除了使用<code>PDF</code>格式的图片外，也可以使用<code>75p * 75p</code>大小的<code>png</code>等。</p>
-<p><code>Dynamic Type</code>大致就这些内容。个人觉得局限性有点大吧。如果碰上复杂的 UI 。。。</p>
-<p><img src="/images/dynamic_type/p7.jpg" alt="p7"></p>
+<p>isMainThread 的属性是用了 class 关键字。这个关键字比较少见。查了下资料，叫做类属性。使用上并没有一些特殊的困难。比如需要手动生成 getter/setter 方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">@interface TestManager : NSObject</div><div class="line"></div><div class="line">@property (class, nonatomic, strong) NSString *name;</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">static NSString *_name = nil;</div><div class="line"></div><div class="line">@implementation TestManager</div><div class="line"></div><div class="line">+ (NSString *)name &#123;</div><div class="line">    return _name;</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (void)setName:(NSString *)name &#123;</div><div class="line">    _name = name;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>上述代码，是用 class 声明一个 name 属性。在使用上呢，其实就只是 点语法 而已。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">TestManager.name = @&quot;test&quot;;</div><div class="line">NSLog(@&quot;%@&quot;, TestManager.name);</div></pre></td></tr></table></figure>
+<p>也是挺简单的。</p>
+<p>比如我们比较常见的单例，其实也可以用 class 属性来试下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">@interface TestManager : NSObject</div><div class="line"></div><div class="line">@property (class, nonatomic, readonly) TestManager *sharedInstance;</div><div class="line"></div><div class="line">- (void)test;</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">static TestManager *_shareInstance = nil;</div><div class="line"></div><div class="line">@implementation TestManager</div><div class="line"></div><div class="line">+ (TestManager *)sharedInstance &#123;</div><div class="line">    static dispatch_once_t onceToken;</div><div class="line">    dispatch_once(&amp;onceToken, ^&#123;</div><div class="line">        _shareInstance = [[TestManager alloc] init];</div><div class="line">    &#125;);</div><div class="line">    return _shareInstance;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)test &#123;</div><div class="line">    NSLog(@&quot;test&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">// 使用</div><div class="line">[TestManager.sharedInstance test];</div></pre></td></tr></table></figure>
+<p>小小发现。记录下吧。又是一篇水文。（逃</p>
 
       
     </div>
@@ -447,9 +407,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Swift/" rel="tag"># Swift</a>
-          
-            <a href="/tags/iOS/" rel="tag"># iOS</a>
+            <a href="/tags/Objective-C/" rel="tag"># Objective-C</a>
           
         </div>
       
@@ -462,8 +420,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/swift4/" rel="next" title="iOS 11 的一些玩意儿：Swift 4">
-                <i class="fa fa-chevron-left"></i> iOS 11 的一些玩意儿：Swift 4
+              <a href="/bug_by_update_masonry/" rel="next" title="记录一次更新Masonry的问题">
+                <i class="fa fa-chevron-left"></i> 记录一次更新Masonry的问题
               </a>
             
           </div>
@@ -471,10 +429,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/ios11_something/" rel="prev" title="iOS 11 的一些玩意儿：乱七杂八">
-                iOS 11 的一些玩意儿：乱七杂八 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -500,8 +454,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="dynamic_type/"
-           data-title="iOS 11 的一些玩意儿：Dynamic Type" data-url="http://yoursite.com/dynamic_type/">
+      <div class="ds-thread" data-thread-key="class_property/"
+           data-title="class property" data-url="http://yoursite.com/class_property/">
       </div>
     
   </div>

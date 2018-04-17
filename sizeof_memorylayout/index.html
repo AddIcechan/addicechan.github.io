@@ -101,7 +101,7 @@
 最近在看 OpenGLES，碰到 glBufferData 函数对此递归懵逼。
 1func glBufferData(_ target: GLenum, _ size: GLsizeiptr, _ data: UnsafeRawPointer!, _ usage: GLenum)
 第三个参数需要计算顶点数据的大小。很多教程都是用 Objective-C 去写的，因此使用 sizeo">
-<meta property="og:updated_time" content="2018-04-08T14:48:27.309Z">
+<meta property="og:updated_time" content="2018-04-17T06:12:21.024Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sizeof 和 MemoryLayout">
 <meta name="twitter:description" content="先扯个题外话。
@@ -392,7 +392,10 @@
 <p>如果属性是可选类型的话，那么则需要加 1。比如 Dog 中的 String 是 String?，那么其所占内存大小则是 25，最终得到的 Dog 所占内存大小是 26。由此可见，使用可选类型会比较占内存。🐱🐱🐱???</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Dog</span> </span>&#123;</div><div class="line">	<span class="keyword">let</span> age : <span class="type">Int8</span>		<span class="comment">// 1</span></div><div class="line">	<span class="keyword">let</span> name : <span class="type">String</span>	<span class="comment">// 24</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="type">MemoryLayout</span>&lt;<span class="type">Dog</span>&gt;.size	<span class="comment">// 32</span></div></pre></td></tr></table></figure>
 <p>假如将 Dog 中的 name 和 age 调转，那么得到的内存大小又是不一样的。这里主要是因为内存对齐原则。64位机器的内存对齐是 8 bytes，因此，当 age 在内存排列后是 1，需要补齐到 8 ，才能继续排列 name 。因此最终结果是 32 。</p>
+<p>在 C 语言中，有时候用使用<code>offsetof(a,b)</code>，来计算某个属性的偏移量。目前在 Swift 4 中并没有这样的函数去计算偏移量。在 stackoverflow 上找到的答案是建议如果 struct 用 C 语言定义，然后通过链接桥使用 offsetof 方法。另外就是，等 Swift 5 ABI 稳定。</p>
 <p>大概就扯这些吧～</p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://stackoverflow.com/questions/49122211/what-is-the-equivalent-in-swift-of-offsetofstruct-member-in-c" target="_blank" rel="external">What is the equivalent in Swift of offsetof(struct, member) in C?
+</a></p>
 
       
     </div>
@@ -498,8 +501,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -581,6 +593,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

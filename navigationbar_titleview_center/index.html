@@ -73,7 +73,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Swift," />
 
 
 
@@ -91,12 +91,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="ADDICE">
-<meta property="og:url" content="http://yoursite.com/tags/charles/index.html">
+<meta name="description" content="最近遇到一个 UINavigationBar 的 titleView 问题。自定义了一个 UIView，将其赋值给 navigationItem.titleView 。但是在 iOS 8 和 iOS 9 上导航栏并不能居中问题。但是 iOS 10 和 iOS 11 是可以正常居中。那么怎么解决呢？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UINavigationBar titleView 居中问题">
+<meta property="og:url" content="http://yoursite.com/navigationbar_titleview_center/index.html">
 <meta property="og:site_name" content="ADDICE">
+<meta property="og:description" content="最近遇到一个 UINavigationBar 的 titleView 问题。自定义了一个 UIView，将其赋值给 navigationItem.titleView 。但是在 iOS 8 和 iOS 9 上导航栏并不能居中问题。但是 iOS 10 和 iOS 11 是可以正常居中。那么怎么解决呢？">
+<meta property="og:updated_time" content="2018-05-19T07:56:06.974Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ADDICE">
+<meta name="twitter:title" content="UINavigationBar titleView 居中问题">
+<meta name="twitter:description" content="最近遇到一个 UINavigationBar 的 titleView 问题。自定义了一个 UIView，将其赋值给 navigationItem.titleView 。但是在 iOS 8 和 iOS 9 上导航栏并不能居中问题。但是 iOS 10 和 iOS 11 是可以正常居中。那么怎么解决呢？">
 
 
 
@@ -124,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/charles/"/>
+  <link rel="canonical" href="http://yoursite.com/navigationbar_titleview_center/"/>
 
 
 
 
 
-  <title> 标签: charles | ADDICE </title>
+  <title> UINavigationBar titleView 居中问题 | ADDICE </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -164,7 +168,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -248,46 +252,174 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        charles
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/navigationbar_titleview_center/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="六叔">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ADDICE">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                UINavigationBar titleView 居中问题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-16T10:52:52+08:00">
+                2018-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/navigationbar_titleview_center/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="navigationbar_titleview_center/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>最近遇到一个 UINavigationBar 的 titleView 问题。自定义了一个 UIView，将其赋值给 navigationItem.titleView 。但是在 iOS 8 和 iOS 9 上导航栏并不能居中问题。但是 iOS 10 和 iOS 11 是可以正常居中。那么怎么解决呢？</p>
+<a id="more"></a>
+<p>先上代码吧。自定义了一个 titleView，并使用了 SnapKit 进行内部组件的约束处理。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> titleView = <span class="type">UIView</span>(frame: .zero)</div><div class="line">titleView.backgroundColor = .red</div><div class="line">    </div><div class="line"><span class="keyword">let</span> lbl = <span class="type">UILabel</span>(frame: .zero)</div><div class="line">lbl.text = <span class="string">"lblblblblbl"</span></div><div class="line">titleView.addSubview(lbl)</div><div class="line">lbl.snp.makeConstraints &#123;</div><div class="line">    $<span class="number">0</span>.leading.top.bottom.equalToSuperview()</div><div class="line">&#125;</div><div class="line">    </div><div class="line"><span class="keyword">let</span> lbl2 = <span class="type">UILabel</span>(frame: .zero)</div><div class="line">lbl2.text = <span class="string">"ddddd"</span></div><div class="line">lbl2.textColor = .white</div><div class="line">titleView.addSubview(lbl2)</div><div class="line">lbl2.snp.makeConstraints&#123;</div><div class="line">    $<span class="number">0</span>.top.bottom.equalTo(lbl)</div><div class="line">    $<span class="number">0</span>.leading.equalTo(lbl.snp.trailing)</div><div class="line">    $<span class="number">0</span>.trailing.equalToSuperview()</div><div class="line">&#125;</div><div class="line">    </div><div class="line">navigationItem.titleView = titleView</div><div class="line"></div><div class="line">navigationItem.rightBarButtonItem = <span class="type">UIBarButtonItem</span>(barButtonSystemItem: .add, target: <span class="literal">nil</span>, action: <span class="literal">nil</span>)</div></pre></td></tr></table></figure>
+<p>用 Xcode 的 Capture View Hierarchy 查看下导航栏的 UI 层级。</p>
+<p>在 iOS 8/9/10 ，titleView 的位置约束缺少，而 iOS 11，titleView 的会自动添加一个位置约束。</p>
+<p>因此，可以模仿 iOS 11 下的 titleView 的约束。给 iOS 8/9/10 的 titleView 添加适当的约束。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> #available(iOS <span class="number">11</span>, *) &#123; &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">if</span> <span class="keyword">let</span> titleView = navigationItem.titleView &#123;</div><div class="line">        </div><div class="line">        titleView.snp.makeConstraints &#123;</div><div class="line">            $<span class="number">0</span>.centerX.centerY.equalToSuperview()</div><div class="line">            $<span class="number">0</span>.bottom.lessThanOrEqualToSuperview()</div><div class="line">            $<span class="number">0</span>.top.greaterThanOrEqualToSuperview()</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一次无聊的 UI 实验。🤷‍♀️。</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/charles_download_app_old_version/" itemprop="url">
-              
-                <span itemprop="name">利用 Charles 通过 iTunes 下载旧版本的 App</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-01-29T17:34:03+08:00"
-              content="2017-01-29" >
-          01-29
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Swift/" rel="tag"># Swift</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/shallowcopy_deepcopy/" rel="next" title="浅拷贝和深拷贝">
+                <i class="fa fa-chevron-left"></i> 浅拷贝和深拷贝
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -295,6 +427,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="navigationbar_titleview_center/"
+           data-title="UINavigationBar titleView 居中问题" data-url="http://yoursite.com/navigationbar_titleview_center/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -518,6 +658,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 

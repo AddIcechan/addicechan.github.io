@@ -73,7 +73,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Objective-C,Swift," />
+  <meta name="keywords" content="Objective-C," />
 
 
 
@@ -104,7 +104,9 @@
 <meta property="og:image" content="http://yoursite.com/images/xcconfig/5.png">
 <meta property="og:image" content="http://yoursite.com/images/xcconfig/6.png">
 <meta property="og:image" content="http://yoursite.com/images/xcconfig/7.png">
-<meta property="og:updated_time" content="2018-06-01T09:56:40.655Z">
+<meta property="og:image" content="http://yoursite.com/images/xcconfig/8.png">
+<meta property="og:image" content="http://yoursite.com/images/xcconfig/9.png">
+<meta property="og:updated_time" content="2018-06-01T13:02:12.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xcconfig 使用">
 <meta name="twitter:description" content="在实际开发中，现在很多需求会要求马甲包开发。同一份代码，不同的 bundle ID / icon / 包名等。通常来说，有多种方式可以来完成这个任务。一则使用多个 target 来进行管理，但是这种方式在笔者看来并不讨喜。可能会存在文件漏加的情况；二则是使用多个 config 来配置，笔者比较推荐这种。这也是本文所要介绍的。算是一个比较实用的技巧吧。">
@@ -376,7 +378,7 @@
       
         <p>在实际开发中，现在很多需求会要求马甲包开发。同一份代码，不同的 bundle ID / icon / 包名等。通常来说，有多种方式可以来完成这个任务。一则使用多个 target 来进行管理，但是这种方式在笔者看来并不讨喜。可能会存在文件漏加的情况；二则是使用多个 config 来配置，笔者比较推荐这种。这也是本文所要介绍的。算是一个比较实用的技巧吧。</p>
 <a id="more"></a>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>一、首先需要新建一个 xcconfig。</p>
+<p>一、首先需要新建一个 xcconfig。</p>
 <p><img src="/images/xcconfig/1.png" alt="1"></p>
 <p>假设新建 Debug_1.xcconfig 和 Release_1.xcconfig 。</p>
 <p><img src="/images/xcconfig/2.png" alt="2"></p>
@@ -398,6 +400,11 @@
 <p>复制粘贴到所建的 xcconfig ，可以直接看出对应的配置，并且可以进行修改。比如 Product Name。</p>
 <p><img src="/images/xcconfig/7.png" alt="7"></p>
 <p>另外，每次改完配置后，建议是 Product - clean ( command + shift + k) 清楚下。</p>
+<p>四、Scheme</p>
+<p>为了开发的方便，可以新建一个 Scheme，并且选择对应的 config。</p>
+<p><img src="/images/xcconfig/8.png" alt="8"></p>
+<p><img src="/images/xcconfig/9.png" alt="9"></p>
+<p>如果使用 archive 方式进行打包上传的话，那么 archive 对应的配置也得选择相应的。</p>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
 <li><a href="https://pewpewthespells.com/blog/xcconfig_guide.html#CondVarSDK" target="_blank" rel="external">The Unofficial Guide to xcconfig files</a></li>
 </ol>
@@ -432,8 +439,6 @@
           
             <a href="/tags/Objective-C/" rel="tag"># Objective-C</a>
           
-            <a href="/tags/Swift/" rel="tag"># Swift</a>
-          
         </div>
       
 
@@ -454,10 +459,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/xcconfig~/" rel="prev" title="xcconfig 使用">
-                xcconfig 使用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -533,7 +534,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -617,7 +618,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">1.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">1.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>

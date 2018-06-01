@@ -91,19 +91,24 @@
 
 
 
-<meta name="description" content="在Swift中，命名一个方法参数的时候，如果有多个特定类型的参数，可以直接使用可变参数(Variadic Parameters)。官网文档链接
-使用可变参数，其实很简单。就是在参数类型加上…。比如Int…。实际上，方法内部去调用该参数的话，Xcode提示的是[Int]。也就是一个Array。这样也是大大方便。不用非得去声明一个[Int]。">
+<meta name="description" content="在实际开发中，现在很多需求会要求马甲包开发。同一份代码，不同的 bundle ID / icon / 包名等。通常来说，有多种方式可以来完成这个任务。一则使用多个 target 来进行管理，但是这种方式在笔者看来并不讨喜。可能会存在文件漏加的情况；二则是使用多个 config 来配置，笔者比较推荐这种。这也是本文所要介绍的。算是一个比较实用的技巧吧。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="可变参数">
-<meta property="og:url" content="http://yoursite.com/variadic_parameters/index.html">
+<meta property="og:title" content="xcconfig 使用">
+<meta property="og:url" content="http://yoursite.com/xcconfig/index.html">
 <meta property="og:site_name" content="ADDICE">
-<meta property="og:description" content="在Swift中，命名一个方法参数的时候，如果有多个特定类型的参数，可以直接使用可变参数(Variadic Parameters)。官网文档链接
-使用可变参数，其实很简单。就是在参数类型加上…。比如Int…。实际上，方法内部去调用该参数的话，Xcode提示的是[Int]。也就是一个Array。这样也是大大方便。不用非得去声明一个[Int]。">
-<meta property="og:updated_time" content="2017-07-29T12:07:22.000Z">
+<meta property="og:description" content="在实际开发中，现在很多需求会要求马甲包开发。同一份代码，不同的 bundle ID / icon / 包名等。通常来说，有多种方式可以来完成这个任务。一则使用多个 target 来进行管理，但是这种方式在笔者看来并不讨喜。可能会存在文件漏加的情况；二则是使用多个 config 来配置，笔者比较推荐这种。这也是本文所要介绍的。算是一个比较实用的技巧吧。">
+<meta property="og:image" content="http://yoursite.com/images/xcconfig/1.png">
+<meta property="og:image" content="http://yoursite.com/images/xcconfig/2.png">
+<meta property="og:image" content="http://yoursite.com/images/xcconfig/3.png">
+<meta property="og:image" content="http://yoursite.com/images/xcconfig/4.png">
+<meta property="og:image" content="http://yoursite.com/images/xcconfig/5.png">
+<meta property="og:image" content="http://yoursite.com/images/xcconfig/6.png">
+<meta property="og:image" content="http://yoursite.com/images/xcconfig/7.png">
+<meta property="og:updated_time" content="2018-06-01T09:56:40.655Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="可变参数">
-<meta name="twitter:description" content="在Swift中，命名一个方法参数的时候，如果有多个特定类型的参数，可以直接使用可变参数(Variadic Parameters)。官网文档链接
-使用可变参数，其实很简单。就是在参数类型加上…。比如Int…。实际上，方法内部去调用该参数的话，Xcode提示的是[Int]。也就是一个Array。这样也是大大方便。不用非得去声明一个[Int]。">
+<meta name="twitter:title" content="xcconfig 使用">
+<meta name="twitter:description" content="在实际开发中，现在很多需求会要求马甲包开发。同一份代码，不同的 bundle ID / icon / 包名等。通常来说，有多种方式可以来完成这个任务。一则使用多个 target 来进行管理，但是这种方式在笔者看来并不讨喜。可能会存在文件漏加的情况；二则是使用多个 config 来配置，笔者比较推荐这种。这也是本文所要介绍的。算是一个比较实用的技巧吧。">
+<meta name="twitter:image" content="http://yoursite.com/images/xcconfig/1.png">
 
 
 
@@ -131,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/variadic_parameters/"/>
+  <link rel="canonical" href="http://yoursite.com/xcconfig/"/>
 
 
 
 
 
-  <title> 可变参数 | ADDICE </title>
+  <title> xcconfig 使用 | ADDICE </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -265,7 +270,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/variadic_parameters/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/xcconfig/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="六叔">
@@ -286,7 +291,7 @@
             
             
               
-                可变参数
+                xcconfig 使用
               
             
           </h1>
@@ -301,8 +306,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-23T23:29:08+08:00">
-                2017-03-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-28T18:37:27+08:00">
+                2018-05-28
               </time>
             
 
@@ -342,8 +347,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/variadic_parameters/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="variadic_parameters/" itemprop="commentCount"></span>
+                <a href="/xcconfig/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="xcconfig/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -369,24 +374,33 @@
       
 
       
-        <p>在<code>Swift</code>中，命名一个方法参数的时候，如果有多个特定类型的参数，可以直接使用可变参数(<code>Variadic Parameters</code>)。<a href="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Functions.html" target="_blank" rel="external">官网文档链接</a></p>
-<p>使用可变参数，其实很简单。就是在参数类型加上<code>…</code>。比如<code>Int…</code>。实际上，方法内部去调用该参数的话，<code>Xcode</code>提示的是<code>[Int]</code>。也就是一个<code>Array</code>。这样也是大大方便。不用非得去声明一个<code>[Int]</code>。</p>
+        <p>在实际开发中，现在很多需求会要求马甲包开发。同一份代码，不同的 bundle ID / icon / 包名等。通常来说，有多种方式可以来完成这个任务。一则使用多个 target 来进行管理，但是这种方式在笔者看来并不讨喜。可能会存在文件漏加的情况；二则是使用多个 config 来配置，笔者比较推荐这种。这也是本文所要介绍的。算是一个比较实用的技巧吧。</p>
 <a id="more"></a>
-<p>小二。。上代码～～～</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 多数字相加</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">(<span class="number">_</span> values: Int...)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">return</span> values.<span class="built_in">reduce</span>(<span class="number">0</span>)&#123; $<span class="number">0</span> + $<span class="number">1</span> &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">print</span>(add(<span class="number">1</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">9</span>))</div><div class="line"><span class="comment">// 23</span></div></pre></td></tr></table></figure>
-<p>再比如，可以封装一个<code>UIAlertController</code>。如果觉得每次得写一大堆<code>alert.addAction()</code> 巴拉巴拉.</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">extension</span> <span class="title">UIAlertController</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">func</span> <span class="title">show</span>(<span class="title">_</span> <span class="title">vc</span>: <span class="title">UIViewController</span>?, <span class="title">title</span>: <span class="title">String</span>, <span class="title">msg</span>: <span class="title">String</span>, <span class="title">style</span>: <span class="title">UIAlertControllerStyle</span> ,<span class="title">btns</span>: <span class="title">String</span>... ,<span class="title">completionHandler</span>:@<span class="title">escaping</span> ((<span class="title">_</span> <span class="title">btnIndex</span>: <span class="title">Int</span>) -&gt; <span class="title">Void</span>)) </span>&#123;</div><div class="line">        <span class="keyword">let</span> alertController : <span class="type">UIAlertController</span> = <span class="type">UIAlertController</span>(title: title, message: msg, preferredStyle: style)</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (index, element) <span class="keyword">in</span> btns.enumerated() &#123;</div><div class="line">            alertController.addAction(<span class="type">UIAlertAction</span>(title: element, style: .<span class="keyword">default</span>, handler: &#123; <span class="number">_</span> <span class="keyword">in</span></div><div class="line">                completionHandler(index)</div><div class="line">            &#125;))</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> style == .actionSheet &#123;</div><div class="line">            alertController.addAction(<span class="type">UIAlertAction</span>(title: <span class="string">"cancel"</span>, style: .cancel, handler: <span class="literal">nil</span>))</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        vc?.present(alertController, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 使用</span></div><div class="line"><span class="type">UIAlertController</span>.show(<span class="keyword">self</span>, title: <span class="string">"Alert"</span>, msg: <span class="string">"show alert"</span>, style: .alert, btns: <span class="string">"previous"</span>, <span class="string">"next"</span>) &#123; index <span class="keyword">in</span></div><div class="line">         <span class="built_in">print</span>(index)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>不过，可变参数无法用于<code>Objective-C</code>中。</p>
-<p><code>Objective-C</code>如果要使用可变参数。那么需要使用到<code>va_list</code>等系列<code>C函数</code>。</p>
-<p>小二，继续上代码~~~</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">- (NSString *)add:(NSString *)value, ... NS_REQUIRES_NIL_TERMINATION &#123;</div><div class="line">    NSMutableString *result = [NSMutableString string];</div><div class="line">    [result appendString:value];</div><div class="line">    if (value) &#123;</div><div class="line">        va_list values;</div><div class="line">        // values 会从 value 的指针地址开始取值，直至nil</div><div class="line">        va_start(values, value);</div><div class="line">        id tempValue;</div><div class="line">        while((tempValue = va_arg(values, NSString *))) &#123;</div><div class="line">            [result appendString:tempValue];</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        // 记得清空</div><div class="line">        va_end(values);</div><div class="line">    &#125;</div><div class="line">    return result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>使用<code>va_start</code>这个宏，会从<code>value</code>的指针地址开始，一个一个的去取值。对于<code>非指针</code>的话，那么就无法实现。至于 方法名后面的<code>NS_REQUIRES_NIL_TERMINATION</code>，则是在方法调用的时候，加上<code>nil</code>作为终结。因为如果没有<code>nil</code>的话，那么也是会导致 不停的取值，于是，拿到未初始化的内存空间后，就导致崩溃啦。Boom….</p>
-<p>写完这个方法后，只能感叹下<code>Swift</code>封装的太好了。很方便的<code>...</code>语法，加上<code>高阶函数</code>的使用。貌似也不太算很公正的对比。（逃。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">(<span class="number">_</span> values: String...)</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">    <span class="keyword">return</span> values.<span class="built_in">reduce</span>(<span class="string">""</span>)&#123; $<span class="number">0</span> + $<span class="number">1</span> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这样几行代码，就已经实现了上述<code>Objective-C</code>写的方法了。</p>
-<p>写这篇的根源，其实是在翻（gen）看(ben)<code>Swift</code>(jiu)的(bu)官(zhi)方(dao)文(de)档(shuo)。于是看到可变参数这玩意了。后来想想，<code>Objective-C</code>的<code>NSArray</code>、<code>UIAlertView</code>等，其实也是基于这样去写的。</p>
-<p>算是又明白了一些。但愿不太迟。</p>
-<p>哭瞎了。。。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>一、首先需要新建一个 xcconfig。</p>
+<p><img src="/images/xcconfig/1.png" alt="1"></p>
+<p>假设新建 Debug_1.xcconfig 和 Release_1.xcconfig 。</p>
+<p><img src="/images/xcconfig/2.png" alt="2"></p>
+<p>二、接着在 project - info - configurations 创建两个新的 configutation 。（Debug_1 和 Release_1） </p>
+<p><img src="/images/xcconfig/3.png" alt="3"></p>
+<p>并且选择对应的 xcconfig。</p>
+<p><img src="/images/xcconfig/4.png" alt="4"></p>
+<p>三、在 Debug_1 中可以配置一些我们需要的参数。比如说</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Debug_1.xcconfig</div><div class="line"></div><div class="line">// 必须先 #include </div><div class="line">#include &quot;Debug_1.xcconfig&quot;</div><div class="line">// 使用 Cocoapods 管理第三方库的话，需要将对应的配置也 include 进来。</div><div class="line">#include &quot;Pods/Target Support Files/Pods-ConfigDemo/Pods-ConfigDemo.debug_1.xcconfig&quot;</div><div class="line"></div><div class="line">APP_NAME = DEBUG_1</div></pre></td></tr></table></figure>
+<p>之后，在 Build Settings - Product Name 将对应的 Debug_1 改成<code>$(APP_NAME)</code>需要<code>$(自定义)</code>这样的方式来确定对应的配置选项。</p>
+<p><img src="/images/xcconfig/5.png" alt="5"></p>
+<p>其实，也可以单独在此处更改成对应的配置。但是使用一个单独的配置文件，实际上会更加美观。</p>
+<p>另外也可以进行一些比较负责的组合。比如想要在 app 名称后面增加一个 debug 标示等。比如 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">APP_NAME = $(TARGET_NAME)_debug</div><div class="line"></div><div class="line">APP_NAME = $(TARGET_NAME)_$(VERSIONING_SYSTEM)</div></pre></td></tr></table></figure>
+<p>当然，也可以做一些特定的标示，比如指定架构等。如 iOS SDK。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">APP_NAME[sdk=iphoneos*] = $(TARGET_NAME)</div></pre></td></tr></table></figure>
+<p>有个比较简单的方法，可以选中任意的配置项。</p>
+<p><img src="/images/xcconfig/6.png" alt="6"></p>
+<p>复制粘贴到所建的 xcconfig ，可以直接看出对应的配置，并且可以进行修改。比如 Product Name。</p>
+<p><img src="/images/xcconfig/7.png" alt="7"></p>
+<p>另外，每次改完配置后，建议是 Product - clean ( command + shift + k) 清楚下。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
+<li><a href="https://pewpewthespells.com/blog/xcconfig_guide.html#CondVarSDK" target="_blank" rel="external">The Unofficial Guide to xcconfig files</a></li>
+</ol>
 
       
     </div>
@@ -431,8 +445,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/swift_use/" rel="next" title="整理Swift开发用到的一些小技巧">
-                <i class="fa fa-chevron-left"></i> 整理Swift开发用到的一些小技巧
+              <a href="/navigationbar_titleview_center/" rel="next" title="UINavigationBar titleView 居中问题">
+                <i class="fa fa-chevron-left"></i> UINavigationBar titleView 居中问题
               </a>
             
           </div>
@@ -441,8 +455,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/wkwebview/" rel="prev" title="WKWebView 的一些小总结">
-                WKWebView 的一些小总结 <i class="fa fa-chevron-right"></i>
+              <a href="/xcconfig~/" rel="prev" title="xcconfig 使用">
+                xcconfig 使用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -469,8 +483,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="variadic_parameters/"
-           data-title="可变参数" data-url="http://yoursite.com/variadic_parameters/">
+      <div class="ds-thread" data-thread-key="xcconfig/"
+           data-title="xcconfig 使用" data-url="http://yoursite.com/xcconfig/">
       </div>
     
   </div>
@@ -494,8 +508,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -584,6 +607,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">1.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

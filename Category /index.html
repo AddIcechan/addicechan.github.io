@@ -1,0 +1,832 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="dbsXy9PpVD6oyAoaxfmmd-xPyqj5acs3fpxsiE46zJA"" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Objective-C," />
+
+
+
+
+
+  <link rel="alternate" href="https://addicechan.github.io/" title="ADDICE" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="先记录几个问题吧。
+
+category 的结构是什么？category 为什么不能添加变量？
+category 是怎样加载的？
+load和 initialize 的区别？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Category">
+<meta property="og:url" content="http://yoursite.com/Category /index.html">
+<meta property="og:site_name" content="ADDICE">
+<meta property="og:description" content="先记录几个问题吧。
+
+category 的结构是什么？category 为什么不能添加变量？
+category 是怎样加载的？
+load和 initialize 的区别？">
+<meta property="og:image" content="http://yoursite.com/image/category/1.jpg">
+<meta property="og:image" content="http://yoursite.com/image/category/2.jpg">
+<meta property="og:image" content="http://yoursite.com/image/category/3.jpg">
+<meta property="og:image" content="http://yoursite.com/image/category/4.jpg">
+<meta property="og:updated_time" content="2018-10-02T15:47:59.738Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Category">
+<meta name="twitter:description" content="先记录几个问题吧。
+
+category 的结构是什么？category 为什么不能添加变量？
+category 是怎样加载的？
+load和 initialize 的区别？">
+<meta name="twitter:image" content="http://yoursite.com/image/category/1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/Category /"/>
+
+
+
+
+
+  <title> Category | ADDICE </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '93048380-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ADDICE</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/Category /">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="六叔">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ADDICE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Category
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-01T20:53:30+08:00">
+                2018-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/Category /#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="Category /" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>先记录几个问题吧。</p>
+<ol>
+<li>category 的结构是什么？category 为什么不能添加变量？</li>
+<li>category 是怎样加载的？</li>
+<li><code>load</code>和 <code>initialize</code> 的区别？</li>
+</ol>
+<a id="more"></a>
+<p>在此之前，可以下载 <a href="https://opensource.apple.com/tarballs/objc4/" target="_blank" rel="external"> rumtime 的源码</a>。</p>
+<h3 id="category-的结构"><a href="#category-的结构" class="headerlink" title="category 的结构"></a>category 的结构</h3><p>在<code>objc-runtime-new.h</code>可以找到 category 的结构。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">struct</span> <span class="keyword">category_t</span> &#123;</div><div class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *name;</div><div class="line">    <span class="keyword">classref_t</span> cls;</div><div class="line">    <span class="keyword">struct</span> <span class="keyword">method_list_t</span> *instanceMethods;      <span class="comment">// 实例方法表</span></div><div class="line">    <span class="keyword">struct</span> <span class="keyword">method_list_t</span> *classMethods;         <span class="comment">// 类方法表</span></div><div class="line">    <span class="keyword">struct</span> <span class="keyword">protocol_list_t</span> *protocols;          <span class="comment">// 协议表</span></div><div class="line">    <span class="keyword">struct</span> <span class="keyword">property_list_t</span> *instanceProperties; <span class="comment">// 属性表</span></div><div class="line">    <span class="comment">// Fields below this point are not always present on disk.</span></div><div class="line">    <span class="keyword">struct</span> <span class="keyword">property_list_t</span> *_classProperties;   <span class="comment">// 类属性表</span></div><div class="line">    <span class="keyword">method_list_t</span> *methodsForMeta(<span class="keyword">bool</span> isMeta) &#123;</div><div class="line">        <span class="keyword">if</span> (isMeta) <span class="keyword">return</span> classMethods;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">return</span> instanceMethods;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">property_list_t</span> *propertiesForMeta(<span class="keyword">bool</span> isMeta, <span class="keyword">struct</span> header_info *hi);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>从上述结构可以得知，category 的结构中有实例方法表，类方法表，协议表，属性表，类属性表。并没有变量表，这也是 category 无法直接添加变量的原因。</p>
+<h3 id="category-的加载"><a href="#category-的加载" class="headerlink" title="category 的加载"></a>category 的加载</h3><p>其实，这个问题需要从位于 objc-os.mm 中的<code>_objc_init</code>方法中开始。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> _objc_init(<span class="keyword">void</span>)</div><div class="line">&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">bool</span> initialized = <span class="literal">false</span>;</div><div class="line">    <span class="keyword">if</span> (initialized) <span class="keyword">return</span>;</div><div class="line">    initialized = <span class="literal">true</span>;</div><div class="line">    <span class="comment">// fixme defer initialization until an objc-using image is found?</span></div><div class="line">    environ_init();</div><div class="line">    tls_init();</div><div class="line">    static_init();</div><div class="line">    lock_init();</div><div class="line">    exception_init();</div><div class="line">    _dyld_objc_notify_register(&amp;map_images, load_images, unmap_image);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>重点关注 _dyld_objc_notify_register 传入的三个参数：map_images、load_images、unmap_image。从代码得知，map_images -&gt; map_images_nolock -&gt; _read_images 这样的层层调用关系。<br>其中，从 _read_images 的方法中，可以得知，这个方法就是读取 class 文件，protocol，以及 category 的。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Discover categories. </span></div><div class="line">    <span class="keyword">for</span> (EACH_HEADER) &#123;</div><div class="line">        <span class="keyword">category_t</span> **catlist = </div><div class="line">            _getObjc2CategoryList(hi, &amp;count);</div><div class="line">        <span class="keyword">bool</span> hasClassProperties = hi-&gt;info()-&gt;hasCategoryClassProperties();</div><div class="line">        <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; count; i++) &#123;</div><div class="line">            <span class="keyword">category_t</span> *cat = catlist[i];</div><div class="line">            Class cls = remapClass(cat-&gt;cls);</div><div class="line">            <span class="keyword">if</span> (!cls) &#123;</div><div class="line">                <span class="comment">// Category's target class is missing (probably weak-linked).</span></div><div class="line">                <span class="comment">// Disavow any knowledge of this category.</span></div><div class="line">                catlist[i] = nil;</div><div class="line">                <span class="keyword">if</span> (PrintConnecting) &#123;</div><div class="line">                    _objc_inform(<span class="string">"CLASS: IGNORING category \?\?\?(%s) %p with "</span></div><div class="line">                                 <span class="string">"missing weak-linked target class"</span>, </div><div class="line">                                 cat-&gt;name, cat);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">continue</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="comment">// Process this category. </span></div><div class="line">            <span class="comment">// First, register the category with its target class. </span></div><div class="line">            <span class="comment">// Then, rebuild the class's method lists (etc) if </span></div><div class="line">            <span class="comment">// the class is realized. </span></div><div class="line">            <span class="keyword">bool</span> classExists = NO;</div><div class="line">            <span class="keyword">if</span> (cat-&gt;instanceMethods ||  cat-&gt;protocols  </div><div class="line">                ||  cat-&gt;instanceProperties) </div><div class="line">            &#123;</div><div class="line">                addUnattachedCategoryForClass(cat, cls, hi);</div><div class="line">                <span class="keyword">if</span> (cls-&gt;isRealized()) &#123;</div><div class="line">                    remethodizeClass(cls);</div><div class="line">                    classExists = YES;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (PrintConnecting) &#123;</div><div class="line">                    _objc_inform(<span class="string">"CLASS: found category -%s(%s) %s"</span>, </div><div class="line">                                 cls-&gt;nameForLogging(), cat-&gt;name, </div><div class="line">                                 classExists ? <span class="string">"on existing class"</span> : <span class="string">""</span>);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (cat-&gt;classMethods  ||  cat-&gt;protocols  </div><div class="line">                ||  (hasClassProperties &amp;&amp; cat-&gt;_classProperties)) </div><div class="line">            &#123;</div><div class="line">                addUnattachedCategoryForClass(cat, cls-&gt;ISA(), hi);</div><div class="line">                <span class="keyword">if</span> (cls-&gt;ISA()-&gt;isRealized()) &#123;</div><div class="line">                    remethodizeClass(cls-&gt;ISA());</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (PrintConnecting) &#123;</div><div class="line">                    _objc_inform(<span class="string">"CLASS: found category +%s(%s)"</span>, </div><div class="line">                                 cls-&gt;nameForLogging(), cat-&gt;name);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>通过 _getObjc2CategoryList 获取一个 catlist ，也是存放分类的一个列表，之后进行遍历，查看每个分类文件对应的类是否已经链接，如果缺失该类，那么也会将 catlist 中对应的给置为 nil，然后继续下一个分类文件。接着会把分类注册到对应的类去，然后会重写类的方法列表，其中会先添加实例方法和属性，再进行添加类方法和类属性。一直持续到所有分类文件链接读取完毕。<br>而重写类的方法列表则是由 remethodizeClass 方法来进行。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">remethodizeClass</span><span class="params">(Class cls)</span></span></div><div class="line">&#123;</div><div class="line">    category_list *cats;</div><div class="line">    <span class="keyword">bool</span> isMeta;</div><div class="line">    runtimeLock.assertWriting();</div><div class="line">    isMeta = cls-&gt;isMetaClass();</div><div class="line">    <span class="comment">// Re-methodizing: check for more categories</span></div><div class="line">    <span class="keyword">if</span> ((cats = unattachedCategoriesForClass(cls, <span class="literal">false</span><span class="comment">/*not realizing*/</span>))) &#123;</div><div class="line">        <span class="keyword">if</span> (PrintConnecting) &#123;</div><div class="line">            _objc_inform(<span class="string">"CLASS: attaching categories to class '%s' %s"</span>, </div><div class="line">                         cls-&gt;nameForLogging(), isMeta ? <span class="string">"(meta)"</span> : <span class="string">""</span>);</div><div class="line">        &#125;</div><div class="line">        attachCategories(cls, cats, <span class="literal">true</span> <span class="comment">/*flush caches*/</span>);        </div><div class="line">        <span class="built_in">free</span>(cats);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从代码可以得知，category 的方法等也是在这里进行加入的，且看 attachCategories 方法。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> </span></div><div class="line"><span class="title">attachCategories</span><span class="params">(Class cls, category_list *cats, <span class="keyword">bool</span> flush_caches)</span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (!cats) <span class="keyword">return</span>;</div><div class="line">    <span class="keyword">if</span> (PrintReplacedMethods) printReplacements(cls, cats);</div><div class="line">    <span class="keyword">bool</span> isMeta = cls-&gt;isMetaClass();</div><div class="line">    <span class="comment">// fixme rearrange to remove these intermediate allocations</span></div><div class="line">    <span class="keyword">method_list_t</span> **mlists = (<span class="keyword">method_list_t</span> **)</div><div class="line">        <span class="built_in">malloc</span>(cats-&gt;count * <span class="keyword">sizeof</span>(*mlists));</div><div class="line">    <span class="keyword">property_list_t</span> **proplists = (<span class="keyword">property_list_t</span> **)</div><div class="line">        <span class="built_in">malloc</span>(cats-&gt;count * <span class="keyword">sizeof</span>(*proplists));</div><div class="line">    <span class="keyword">protocol_list_t</span> **protolists = (<span class="keyword">protocol_list_t</span> **)</div><div class="line">        <span class="built_in">malloc</span>(cats-&gt;count * <span class="keyword">sizeof</span>(*protolists));</div><div class="line">    <span class="comment">// Count backwards through cats to get newest categories first</span></div><div class="line">    <span class="keyword">int</span> mcount = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> propcount = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> protocount = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> i = cats-&gt;count;</div><div class="line">    <span class="keyword">bool</span> fromBundle = NO;</div><div class="line">    <span class="keyword">while</span> (i--) &#123;</div><div class="line">        <span class="keyword">auto</span>&amp; entry = cats-&gt;<span class="built_in">list</span>[i];</div><div class="line">        <span class="keyword">method_list_t</span> *mlist = entry.cat-&gt;methodsForMeta(isMeta);</div><div class="line">        <span class="keyword">if</span> (mlist) &#123;</div><div class="line">            mlists[mcount++] = mlist;</div><div class="line">            fromBundle |= entry.hi-&gt;isBundle();</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">property_list_t</span> *proplist = </div><div class="line">            entry.cat-&gt;propertiesForMeta(isMeta, entry.hi);</div><div class="line">        <span class="keyword">if</span> (proplist) &#123;</div><div class="line">            proplists[propcount++] = proplist;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">protocol_list_t</span> *protolist = entry.cat-&gt;protocols;</div><div class="line">        <span class="keyword">if</span> (protolist) &#123;</div><div class="line">            protolists[protocount++] = protolist;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">auto</span> rw = cls-&gt;data();</div><div class="line">    prepareMethodLists(cls, mlists, mcount, NO, fromBundle);</div><div class="line">    rw-&gt;methods.attachLists(mlists, mcount);</div><div class="line">    <span class="built_in">free</span>(mlists);</div><div class="line">    <span class="keyword">if</span> (flush_caches  &amp;&amp;  mcount &gt; <span class="number">0</span>) flushCaches(cls);</div><div class="line">    rw-&gt;properties.attachLists(proplists, propcount);</div><div class="line">    <span class="built_in">free</span>(proplists);</div><div class="line">    rw-&gt;protocols.attachLists(protolists, protocount);</div><div class="line">    <span class="built_in">free</span>(protolists);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>以倒序的方式，获取到 category 的方法，属性，协议，再将其加入到对应的数组里面。之后在通过 attachLists 方法，将他们加入到对应的原数组中。有一个重要的是，category 的方法，属性，协议均会插入到类对应的数组的前头。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">attachLists</span><span class="params">(List* <span class="keyword">const</span> * addedLists, <span class="keyword">uint32_t</span> addedCount)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (addedCount == <span class="number">0</span>) <span class="keyword">return</span>;</div><div class="line">        <span class="keyword">if</span> (hasArray()) &#123;</div><div class="line">            <span class="comment">// many lists -&gt; many lists</span></div><div class="line">            <span class="keyword">uint32_t</span> oldCount = <span class="built_in">array</span>()-&gt;count;</div><div class="line">            <span class="keyword">uint32_t</span> newCount = oldCount + addedCount;</div><div class="line">            setArray((<span class="keyword">array_t</span> *)<span class="built_in">realloc</span>(<span class="built_in">array</span>(), <span class="keyword">array_t</span>::byteSize(newCount)));</div><div class="line">            <span class="built_in">array</span>()-&gt;count = newCount;</div><div class="line">            memmove(<span class="built_in">array</span>()-&gt;lists + addedCount, <span class="built_in">array</span>()-&gt;lists, </div><div class="line">                    oldCount * <span class="keyword">sizeof</span>(<span class="built_in">array</span>()-&gt;lists[<span class="number">0</span>]));</div><div class="line">            <span class="built_in">memcpy</span>(<span class="built_in">array</span>()-&gt;lists, addedLists, </div><div class="line">                   addedCount * <span class="keyword">sizeof</span>(<span class="built_in">array</span>()-&gt;lists[<span class="number">0</span>]));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (!<span class="built_in">list</span>  &amp;&amp;  addedCount == <span class="number">1</span>) &#123;</div><div class="line">            <span class="comment">// 0 lists -&gt; 1 list</span></div><div class="line">            <span class="built_in">list</span> = addedLists[<span class="number">0</span>];</div><div class="line">        &#125; </div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            <span class="comment">// 1 list -&gt; many lists</span></div><div class="line">            List* oldList = <span class="built_in">list</span>;</div><div class="line">            <span class="keyword">uint32_t</span> oldCount = oldList ? <span class="number">1</span> : <span class="number">0</span>;</div><div class="line">            <span class="keyword">uint32_t</span> newCount = oldCount + addedCount;</div><div class="line">            setArray((<span class="keyword">array_t</span> *)<span class="built_in">malloc</span>(<span class="keyword">array_t</span>::byteSize(newCount)));</div><div class="line">            <span class="built_in">array</span>()-&gt;count = newCount;</div><div class="line">            <span class="keyword">if</span> (oldList) <span class="built_in">array</span>()-&gt;lists[addedCount] = oldList;</div><div class="line">            <span class="built_in">memcpy</span>(<span class="built_in">array</span>()-&gt;lists, addedLists, </div><div class="line">                   addedCount * <span class="keyword">sizeof</span>(<span class="built_in">array</span>()-&gt;lists[<span class="number">0</span>]));</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h3 id="load和-initialize-的区别"><a href="#load和-initialize-的区别" class="headerlink" title="load和 initialize 的区别"></a><code>load</code>和 <code>initialize</code> 的区别</h3><p>举个🌰吧。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line">NS_ASSUME_NONNULL_BEGIN</div><div class="line">@interface SuperClass : NSObject</div><div class="line">@end</div><div class="line">NS_ASSUME_NONNULL_END</div><div class="line"></div><div class="line">#import &quot;SuperClass.h&quot;</div><div class="line">@implementation SuperClass</div><div class="line">+ (void)initialize &#123;</div><div class="line">    NSLog(@&quot;%s this class is %@&quot;, __func__, NSStringFromClass(self));</div><div class="line">&#125;</div><div class="line">+ (void)load &#123;</div><div class="line">    NSLog(@&quot;%s this class is %@&quot;,  __func__, NSStringFromClass(self));</div><div class="line">&#125;</div><div class="line">@end</div><div class="line"></div><div class="line">#import &quot;SuperClass.h&quot;</div><div class="line">NS_ASSUME_NONNULL_BEGIN</div><div class="line">@interface SubClass : SuperClass</div><div class="line">@end</div><div class="line">NS_ASSUME_NONNULL_END</div><div class="line"></div><div class="line">#import &quot;SubClass.h&quot;</div><div class="line">@implementation SubClass</div><div class="line">@end</div><div class="line"></div><div class="line">.....</div><div class="line"></div><div class="line">@implementation ViewController</div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    SubClass *subClass1 = SubClass.new;</div><div class="line">    SubClass *subClass2 = SubClass.new;</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>先说下 load 方法是怎样一个调用的过程。<br>在运行时，还是会从 _objc_init 方法开始。为什么会是从这里开始呢。其实，我们在<code>+load</code>中打上断点。那么在运行过程中，可以看到其是这样的一个顺序。load_images - call_load_methods - load 。将前两者在 runtime 源码中搜索，可以得到对应的方法。load_images 位于<code>objc-runtime-new.mm</code>；call_load_methods 位于<code>objc-loadmethod.mm</code>。而 load_images 恰恰是在 _objc_init 内部进行调用。</p>
+<p><img src="/image/category/1.jpg" alt="1"></p>
+<p>再者，也可以加上一个 symbolic 断点。</p>
+<p><img src="/image/category/2.jpg" alt="2"></p>
+<p>在运行时可以得知，load_images 是在 _objc_init 之后调用的。</p>
+<p><img src="/image/category/3.jpg" alt="3"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span></span></div><div class="line"><span class="title">load_images</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *path __unused, <span class="keyword">const</span> <span class="keyword">struct</span> mach_header *mh)</span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// Return without taking locks if there are no +load methods here.</span></div><div class="line">    <span class="keyword">if</span> (!hasLoadMethods((<span class="keyword">const</span> headerType *)mh)) <span class="keyword">return</span>;</div><div class="line">    <span class="keyword">recursive_mutex_locker_t</span> lock(loadMethodLock);</div><div class="line">    <span class="comment">// Discover load methods</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">rwlock_writer_t</span> lock2(runtimeLock);</div><div class="line">        prepare_load_methods((<span class="keyword">const</span> headerType *)mh);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// Call +load methods (without runtimeLock - re-entrant)</span></div><div class="line">    call_load_methods();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>load_images 会先通过调用 prepare_load_methods 方法来决定一些所需加载方法的数据。比方其内部会通过 add_category_to_loadable_list 方法来把需要加载的类的一些相关数据准备好，如 loadable_categories 等。<br>之后，才是调用 call_load_methods 方法来进行方法的加载。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">call_load_methods</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">static</span> <span class="keyword">bool</span> loading = NO;</div><div class="line">    <span class="keyword">bool</span> more_categories;</div><div class="line">    loadMethodLock.assertLocked();</div><div class="line">    <span class="comment">// Re-entrant calls do nothing; the outermost call will finish the job.</span></div><div class="line">    <span class="keyword">if</span> (loading) <span class="keyword">return</span>;</div><div class="line">    loading = YES;</div><div class="line">    <span class="keyword">void</span> *pool = objc_autoreleasePoolPush();</div><div class="line">    <span class="keyword">do</span> &#123;</div><div class="line">        <span class="comment">// 1. Repeatedly call class +loads until there aren't any more</span></div><div class="line">        <span class="keyword">while</span> (loadable_classes_used &gt; <span class="number">0</span>) &#123;</div><div class="line">            call_class_loads();</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 2. Call category +loads ONCE</span></div><div class="line">        more_categories = call_category_loads();</div><div class="line">        <span class="comment">// 3. Run more +loads if there are classes OR more untried categories</span></div><div class="line">    &#125; <span class="keyword">while</span> (loadable_classes_used &gt; <span class="number">0</span>  ||  more_categories);</div><div class="line">    objc_autoreleasePoolPop(pool);</div><div class="line">    loading = NO;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>load 方法实则就是 call_load_methods 来进行的。在这个方法中，会注意到 call_category_loads() 的方法调用，这里也就是我们在写 category 时，多个 load 方法存在时进行调用的地方了，并且只加载一次。</p>
+<p>以上大概就是 load 加载的过程。那么 initialize 又是怎样的呢？</p>
+<p>在父类的 initialize 方法中打上断点。可以知道其实际上是通过 _class_initialize 方法来实现。该方法位于 objc-initialize.mm 文件中。也可以知道，initialize 方法是在初始化才进行调用。</p>
+<p><img src="/image/category/4.jpg" alt="4"></p>
+<p>并且可以从 _class_initialize 的源码中发现，initialize 是通过 objc_msgSend 来进行调用的。</p>
+<p>因此，load 和 initialize 的区别主要是：</p>
+<ol>
+<li>前者是运行时就进行调用，并且是发生在 main 函数调用前；而后者是在其初始化时才进行调用，并且实则是经过 objc_msgSend 进行消息发送的</li>
+<li>前者只调用一次；后者则是每初始化一次就调用一次</li>
+<li>前者可以多个 load 进行调用；但是后者根据上一节的描述，会发现在 category 中重写 initialize 方法则会进行覆盖</li>
+</ol>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
+<li><a href="https://blog.sunnyxx.com/2014/08/30/objc-pre-main/" target="_blank" rel="external">iOS 程序 main 函数之前发生了什么</a></li>
+<li><a href="https://tech.meituan.com/DiveIntoCategory.html" target="_blank" rel="external">深入理解Objective-C：Category</a></li>
+<li><a href="https://stackoverflow.com/questions/13326435/nsobject-load-and-initialize-what-do-they-do" target="_blank" rel="external">NSObject +load and +initialize - What do they do?</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Objective-C/" rel="tag"># Objective-C</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/xcconfig/" rel="next" title="xcconfig 使用">
+                <i class="fa fa-chevron-left"></i> xcconfig 使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="Category /"
+           data-title="Category" data-url="http://yoursite.com/Category /">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="六叔" />
+          <p class="site-author-name" itemprop="name">六叔</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="https://addicechan.github.io/" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/AddIcechan" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/chjbking" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#category-的结构"><span class="nav-number">1.</span> <span class="nav-text">category 的结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#category-的加载"><span class="nav-number">2.</span> <span class="nav-text">category 的加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#load和-initialize-的区别"><span class="nav-number">3.</span> <span class="nav-text">load和 initialize 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">六叔</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"addice"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://yoursite.com/images/xcconfig/7.png">
 <meta property="og:image" content="http://yoursite.com/images/xcconfig/8.png">
 <meta property="og:image" content="http://yoursite.com/images/xcconfig/9.png">
-<meta property="og:updated_time" content="2018-06-03T07:40:56.995Z">
+<meta property="og:updated_time" content="2018-11-24T02:36:47.646Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xcconfig 使用">
 <meta name="twitter:description" content="在实际开发中，现在很多需求会要求马甲包开发。同一份代码，不同的 bundle ID / icon / 包名等。通常来说，有多种方式可以来完成这个任务。一则使用多个 target 来进行管理，但是这种方式在笔者看来并不讨喜。可能会存在文件漏加的情况；二则是使用多个 config 来配置，笔者比较推荐这种。这也是本文所要介绍的。算是一个比较实用的技巧吧。">
@@ -308,8 +308,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-28T18:37:27+08:00">
-                2018-05-28
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-03T15:40:56+08:00">
+                2018-06-03
               </time>
             
 
@@ -399,6 +399,10 @@
 <p><img src="/images/xcconfig/6.png" alt="6"></p>
 <p>复制粘贴到所建的 xcconfig ，可以直接看出对应的配置，并且可以进行修改。比如 Product Name。</p>
 <p><img src="/images/xcconfig/7.png" alt="7"></p>
+<p>其次，我们也可以利用 xconfig 来进行其他信息的存储。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// Custom URL Host, 该字段存储数据，需在 info.plist 中新增字段，如 &quot;AppURLKey&quot; = $(APP_URL)</div><div class="line">APP_URL = apple.com</div></pre></td></tr></table></figure>
+<p>可以分环境，配置不同域名等，比如测试服和正式服的区别。但是之后需要在 info.plist 文件中增加一个自定义的 key-value，比如上述🌰则是 AppURLKey 对应了 $(APP_URL)。再在代码中进行获取。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">URLStr</span><span class="params">()</span></span> -&gt; <span class="type">String</span> &#123;</div><div class="line">    <span class="keyword">let</span> dict = <span class="type">Bundle</span>.main.infoDictionary!</div><div class="line">    <span class="keyword">return</span> dict[<span class="string">"AppURLKey"</span>] <span class="keyword">as</span>! <span class="type">String</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>另外，每次改完配置后，建议是 Product - clean ( command + shift + k) 清楚下。</p>
 <p>四、Scheme</p>
 <p>为了开发的方便，可以新建一个 Scheme，并且选择对应的 config。</p>
@@ -450,8 +454,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/navigationbar_titleview_center/" rel="next" title="UINavigationBar titleView 居中问题">
-                <i class="fa fa-chevron-left"></i> UINavigationBar titleView 居中问题
+              <a href="/nsscrollview/" rel="next" title="macOS 开发：NSScrollView 学习笔记">
+                <i class="fa fa-chevron-left"></i> macOS 开发：NSScrollView 学习笔记
               </a>
             
           </div>
